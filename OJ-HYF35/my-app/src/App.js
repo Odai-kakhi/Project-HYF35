@@ -17,11 +17,13 @@ componentWillMount() {
   }
  
   render() {
-    const { displayValue } = this.state
+    
+    const { value } = this.state
+    const i = value.length
    
     return (  
     <div className="calculator">
-        <div className="calculator-display">{displayValue}</div>
+        <div className="calculator-display">{value[i-1]}</div>
         <div className="calculator-keypad">
           <div className="input-keys">
             <div className="function-keys">

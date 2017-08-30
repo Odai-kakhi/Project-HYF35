@@ -1,106 +1,115 @@
 import store from '../store' 
 
 
-export function clearDisplay(){
+export function clearDisplay() {
+  const clearLastValue = [...store.state.value]
+  const i = clearLastValue.length
+  clearLastValue[i-1] = 0
   store.setState({
-    displayValue : '0'
+    value : clearLastValue
   })
 }
 
 export function clear(){
   store.setState({
-    value : []
+    value : [0]
   })
 }
  
 export function enterFunction() {
-  const { displayValue, value } = store.state
+  const { value } = store.state
   const newValue = [...value]
-  newValue.push(Number(displayValue))
+  newValue.push(0)
   console.log(newValue)
   store.setState({
-    value : newValue,
-    displayValue : '0'
+    value: newValue,
+    dot: false
+    
   })
 }
-export function performOperation(nextOperator){
-  const {displayValue , operator, value} = store.state
-  const nextValue = parseFloat(displayValue)
-  const operations = {
-      '/' : (prevValue, nextValue) => prevValue / nextValue,
-      '*' : (prevValue, nextValue) => prevValue * nextValue,
-      '+' : (prevValue, nextValue) => prevValue + nextValue,
-      '-' : (prevValue, nextValue) => prevValue - nextValue,
+export function performOperation(operator){
+  const { value } = store.state
+  const newValue = [...value]
+  
+  if (newValue[newValue.length - 1] === 0) {
+    newValue.pop()
+  }
+  
+  if (newValue.length > 1) {
+    switch (operator) {
+      case '+':
+        newValue[newValue.length - 2] = newValue[newValue.length - 2] + newValue[newValue.length - 1]
+        break;
+      case '*':
+        newValue[newValue.length - 2] = newValue[newValue.length - 2] * newValue[newValue.length - 1]
+        break;
+      case '-':
+        newValue[newValue.length - 2] = newValue[newValue.length - 2] - newValue[newValue.length - 1]
+        break;
+      case '/':
+        newValue[newValue.length - 2] = newValue[newValue.length - 2] / newValue[newValue.length - 1]
+        break;
+    
       
-      // 'enter' : (nextValue) => value.push(nextValue) 
+    }
+  newValue.pop()
   }
-
-  if(value == null){
-    store.setState({
-      value : nextValue
-    })
-  } else if (operator) {
-    const currentValue = value || 0
-    const computedValue = operations[operator](currentValue , nextValue)
-    store.setState({
-      value : computedValue,
-      displayValue : String(computedValue)
-    })
-  }
-  
+  console.log(newValue)
   store.setState({
-    watingForOperand : true,
-    operator : nextOperator
+    value : newValue
   })
+  }
   
-}
+  
+  
+
 
 
 
 export function toggleSing(){
-const {displayValue} = store.state
+const { value } = store.state  
+const newValue = [...value]
+const i = newValue.length
+  newValue[i - 1] = -1 * newValue[i - 1]
 store.setState({
-  displayValue : displayValue.charAt(0) === '-' ? displayValue.substr(1) : '-' + displayValue  
+  value : newValue
 })
 }
 
-export function inputDigit(digit){
-    const {displayValue , watingForOperand} = store.state
-    if(watingForOperand){
-      store.setState({
-        displayValue : String(digit),
-        watingForOperand : false
-      })      
-  } 
-    else {
+export function inputDigit(digit) {
+  const { value } = store.state  
+  const newValue = [...value]
+  const i = newValue.length
+  newValue[i-1] = String(newValue[i-1])
+  newValue[i - 1] = newValue[i - 1] === '0' ? digit : newValue[i - 1] + digit
+  newValue[i-1] = Number(newValue[i-1])
 
-      store.setState({
-      displayValue : displayValue === '0' ? String(digit) : displayValue + digit
-    })
- 
-    }
+  store.setState({
+    value : newValue
+  })
+  console.log(value)
   }
 
 export function inputPercent(){
-  const {displayValue} = store.state
-  const value = parseFloat(displayValue)
+  const { value } = store.state
+  const newValue = [...value]
+  const i = newValue.length
+  newValue[i-1] = newValue / 100
   store.setState({
-    displayValue : String (value / 100)
+    value : newValue
   })
 }
 
 export function inputDot(){
-    const { displayValue, watingForOperand } = store.state
-    if (watingForOperand) {
-        store.setState({
-            displayValue: '.',
-            watingForOperand: false
+    const { value, dot } = store.state  
+    if (!dot) {
+      const newValue = [...value]
+      const i = newValue.length
+      newValue[i-1] = newValue[i-1] + '.'
+      store.setState({
+          value: newValue,
+          dot : true
         })
     }
-    else if (displayValue.indexOf('.') === -1) {
-        store.setState({
-            displayValue: displayValue + '.',
-            watingForOperand: false
-        })
-    }
+    
 }
