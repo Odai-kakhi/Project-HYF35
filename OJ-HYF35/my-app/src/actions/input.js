@@ -6,7 +6,23 @@ export function clearDisplay(){
     displayValue : '0'
   })
 }
+
+export function clear(){
+  store.setState({
+    value : []
+  })
+}
  
+export function enterFunction() {
+  const { displayValue, value } = store.state
+  const newValue = [...value]
+  newValue.push(Number(displayValue))
+  console.log(newValue)
+  store.setState({
+    value : newValue,
+    displayValue : '0'
+  })
+}
 export function performOperation(nextOperator){
   const {displayValue , operator, value} = store.state
   const nextValue = parseFloat(displayValue)
@@ -15,8 +31,8 @@ export function performOperation(nextOperator){
       '*' : (prevValue, nextValue) => prevValue * nextValue,
       '+' : (prevValue, nextValue) => prevValue + nextValue,
       '-' : (prevValue, nextValue) => prevValue - nextValue,
-      '=': (prevValue, nextValue) => nextValue,
-      'enter' : (nextValue) => value.push(nextValue) 
+      
+      // 'enter' : (nextValue) => value.push(nextValue) 
   }
 
   if(value == null){
