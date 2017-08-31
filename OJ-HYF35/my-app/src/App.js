@@ -18,15 +18,15 @@ componentWillMount() {
  
   render() {
     
-    const { value } = this.state
+    const { value, displayValue } = this.state
     const i = value.length
    
     return (  
     <div className="calculator">
-        <div className="calculator-display">{value[i-4]}</div>
         <div className="calculator-display">{value[i-3]}</div>
         <div className="calculator-display">{value[i-2]}</div>
         <div className="calculator-display">{value[i-1]}</div>
+        <div className="calculator-display">{displayValue}</div>
 
         <div className="calculator-keypad">
           <div className="input-keys">
@@ -59,11 +59,11 @@ componentWillMount() {
             <button className="calculator-key key-equals" onClick={() => input.enterFunction()}>Enter</button>
           </div>
           <div className="math-keys">
-            <button className="calculator-key key-COS">COS</button>
-            <button className="calculator-key key-SIN">SIN</button>
-            <button className="calculator-key key-LOG">LOG</button>
+            <button className="calculator-key key-COS" onClick={()=>input.performOperation('cos')}>COS</button>
+            <button className="calculator-key key-SIN" onClick={()=>input.performOperation('sin')}>SIN</button>
+            <button className="calculator-key key-LOG" onClick={()=>input.performOperation('log')}>LOG</button>
             <button className="calculator-key key-ARC">ARC</button>
-            <button className="calculator-key key-TAN">TAN</button>
+            <button className="calculator-key key-TAN" onClick={()=>input.performOperation('tan')}>TAN</button>
           </div>
           <div className="math-keys">
             <button className="calculator-key key-COS">COS</button>

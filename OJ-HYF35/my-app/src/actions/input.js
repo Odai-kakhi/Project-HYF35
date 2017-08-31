@@ -2,116 +2,120 @@ import store from '../store'
 
 
 export function clearDisplay() {
-  const clearLastValue = [...store.state.value]
-  const i = clearLastValue.length
-  clearLastValue[i-1] = 0
+
   store.setState({
-    value : clearLastValue
+    displayValue : ''
   })
 }
 
 export function clear(){
   store.setState({
-    value : [0]
+    value : []
   })
 }
  
 export function enterFunction() {
-  const { value } = store.state
+  const { value, displayValue } = store.state
   const newValue = [...value]
-  newValue.push(0)
+  newValue.push(Number(displayValue))
   console.log(newValue)
   store.setState({
     value: newValue,
-    dot: false
+    dot: false,
+    displayValue : ''
     
   })
 }
 export function performOperation(operator){
-  const { value } = store.state
+  const { value, displayValue } = store.state
   const newValue = [...value]
-  
-  if (newValue[newValue.length - 1] === 0) {
-    newValue.pop()
+  if (displayValue !== '') {
+    newValue.push(Number(displayValue))
   }
-  
   if (newValue.length > 1) {
     switch (operator) {
       case '+':
         newValue[newValue.length - 2] = newValue[newValue.length - 2] + newValue[newValue.length - 1]
+        newValue.pop()
         break;
       case '*':
         newValue[newValue.length - 2] = newValue[newValue.length - 2] * newValue[newValue.length - 1]
+        newValue.pop()
         break;
       case '-':
         newValue[newValue.length - 2] = newValue[newValue.length - 2] - newValue[newValue.length - 1]
+        newValue.pop()
         break;
       case '/':
-      if(newValue[newValue.length - 1] != 0){
-         newValue[newValue.length - 2] = newValue[newValue.length - 2] / newValue[newValue.length - 1]
+      if(newValue[newValue.length - 1] !== 0){
+        newValue[newValue.length - 2] = newValue[newValue.length - 2] / newValue[newValue.length - 1]
+        newValue.pop()
       } else {
         newValue[newValue.length -2] = "syntax erorr"
       }
+        break; 
+      default:
+        break;
+        
+    }
+    
+  
+  }
+  if (newValue.length >= 1) {
+    switch (operator) {
+      case 'cos':
+        newValue[newValue.length - 1] = Math.cos(newValue[newValue.length - 1])
+        break;
+
+      case 'sin':
+        newValue[newValue.length - 1] = Math.sin(newValue[newValue.length - 1])
+        break;
+
+      case 'log':
+        newValue[newValue.length - 1] = Math.log(newValue[newValue.length - 1]) 
+        break;
+      case 'tan':
+        newValue[newValue.length - 1] = Math.tan(newValue[newValue.length - 1]) 
         break;
     
-      
+      default:
+        break;
     }
-  newValue.pop()
+    
   }
   console.log(newValue)
   store.setState({
-    value : newValue
+    value: newValue,
+    displayValue: ''
   })
-  }
+}
   
-  
-  
-
-
-
-
 export function toggleSing(){
-const { value } = store.state  
-const newValue = [...value]
-const i = newValue.length
-  newValue[i - 1] = -1 * newValue[i - 1]
+const { displayValue } = store.state  
 store.setState({
-  value : newValue
+  displayValue : String (-1 * Number(displayValue))
 })
 }
 
 export function inputDigit(digit) {
-  const { value } = store.state  
-  const newValue = [...value]
-  const i = newValue.length
-  newValue[i-1] = String(newValue[i-1])
-  newValue[i - 1] = newValue[i - 1] === '0' ? digit : newValue[i - 1] + digit
-  newValue[i-1] = Number(newValue[i-1])
-
+  const { displayValue } = store.state 
   store.setState({
-    value : newValue
-  })
-  console.log(value)
+    displayValue : displayValue === '' ? String(digit) : displayValue + digit
+    })
   }
 
 export function inputPercent(){
-  const { value } = store.state
-  const newValue = [...value]
-  const i = newValue.length
-  newValue[i-1] = newValue / 100
+  const { displayValue } = store.state
   store.setState({
-    value : newValue
+    displayValue : String (Number(displayValue) / 100)
   })
 }
 
 export function inputDot(){
-    const { value, dot } = store.state  
+    const { displayValue, dot } = store.state  
     if (!dot) {
-      const newValue = [...value]
-      const i = newValue.length
-      newValue[i-1] = newValue[i-1] + '.'
       store.setState({
-          value: newValue,
+        displayValue: displayValue + '.',
           dot : true
         })
     }

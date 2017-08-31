@@ -1,7 +1,7 @@
 export default {
 	
-    value : [0],
-    
+    value : [],
+    displayValue : "",
     dot : false,
   
   
