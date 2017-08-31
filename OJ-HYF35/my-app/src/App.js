@@ -31,7 +31,6 @@ componentWillMount() {
         <div className="calculator-keypad">
           <div className="input-keys">
             <div className="function-keys">
-              
               <button className="calculator-key key-clear" onClick={()=>input.clearDisplay()}>AC</button>
               <button className="calculator-key key-sign" onClick={()=> input.toggleSing()}>±</button>
               <button className="calculator-key key-percent" onClick={()=> input.inputPercent()}>%</button>
@@ -50,9 +49,8 @@ componentWillMount() {
               <button className="calculator-key key-7" onClick={()=> input.inputDigit(7)}>7</button>
               <button className="calculator-key key-8" onClick={()=> input.inputDigit(8)}>8</button>
               <button className="calculator-key key-9" onClick={() => input.inputDigit(9)}>9</button>
-             
             </div>
-          </div>
+            </div>
           <div className="operator-keys">
             <button className="calculator-key key-divide" onClick={()=>input.performOperation('/')}>÷</button>
             <button className="calculator-key key-multiply" onClick={()=>input.performOperation('*')}>×</button>
@@ -60,6 +58,21 @@ componentWillMount() {
             <button className="calculator-key key-add" onClick={()=>input.performOperation('+')}>+</button>
             <button className="calculator-key key-equals" onClick={() => input.enterFunction()}>Enter</button>
           </div>
+          <div className="math-keys">
+            <button className="calculator-key key-COS">COS</button>
+            <button className="calculator-key key-SIN">SIN</button>
+            <button className="calculator-key key-LOG">LOG</button>
+            <button className="calculator-key key-ARC">ARC</button>
+            <button className="calculator-key key-TAN">TAN</button>
+          </div>
+          <div className="math-keys">
+            <button className="calculator-key key-COS">COS</button>
+            <button className="calculator-key key-SIN">SIN</button>
+            <button className="calculator-key key-LOG">LOG</button>
+            <button className="calculator-key key-ARC">ARC</button>
+            <button className="calculator-key key-TAN">TAN</button>
+          </div>
+
         </div>
       </div>
 
