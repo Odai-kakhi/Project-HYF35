@@ -23,7 +23,11 @@ componentWillMount() {
    
     return (  
     <div className="calculator">
+        <div className="calculator-display">{value[i-4]}</div>
+        <div className="calculator-display">{value[i-3]}</div>
+        <div className="calculator-display">{value[i-2]}</div>
         <div className="calculator-display">{value[i-1]}</div>
+
         <div className="calculator-keypad">
           <div className="input-keys">
             <div className="function-keys">
