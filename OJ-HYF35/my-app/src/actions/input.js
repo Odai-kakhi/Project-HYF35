@@ -47,7 +47,11 @@ export function performOperation(operator){
         newValue[newValue.length - 2] = newValue[newValue.length - 2] - newValue[newValue.length - 1]
         break;
       case '/':
-        newValue[newValue.length - 2] = newValue[newValue.length - 2] / newValue[newValue.length - 1]
+      if(newValue[newValue.length - 1] != 0){
+         newValue[newValue.length - 2] = newValue[newValue.length - 2] / newValue[newValue.length - 1]
+      } else {
+        newValue[newValue.length -2] = "erorr syntax"
+      }
         break;
     
       
