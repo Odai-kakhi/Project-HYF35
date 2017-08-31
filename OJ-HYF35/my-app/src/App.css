@@ -23,17 +23,21 @@ background: black;
 display: flex;
 flex-direction: column;
 margin: auto;
+margin-top: 15px;
 }
 
 .calculator-display {
 color: white;
 background: #1c191c;
-
 height: 50px;
 font-size: 2.5em;
 padding: 0 30px;
 text-align: right;
 flex: 1;
+border-bottom-style: solid;
+border-bottom-color: white;
+border-bottom-width: thin;
+
 }
 
 .calculator-keypad {
