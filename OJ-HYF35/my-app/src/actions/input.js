@@ -50,7 +50,7 @@ export function performOperation(operator){
       if(newValue[newValue.length - 1] != 0){
          newValue[newValue.length - 2] = newValue[newValue.length - 2] / newValue[newValue.length - 1]
       } else {
-        newValue[newValue.length -2] = "erorr syntax"
+        newValue[newValue.length -2] = "syntax erorr"
       }
         break;
     
