@@ -10,8 +10,8 @@ export default class operatorKeys extends React.Component {
 
         return (
             <div className="operator-keys">
-            <OperatorKey label="/" />
-            <OperatorKey label="*" />
+            <OperatorKey label="÷" />
+            <OperatorKey label="x" />
             <OperatorKey label="-" />
             <OperatorKey label="+" />
             <OperatorKey label="Enter" />

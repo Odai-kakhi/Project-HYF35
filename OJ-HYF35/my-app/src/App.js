@@ -16,7 +16,7 @@ class App extends React.Component {
           <DigitKeys />
           <OperatorKeys />
           <MathKeys />
-          <MathKeys />
+          
 
 
         </div>
