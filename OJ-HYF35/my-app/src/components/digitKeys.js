@@ -12,9 +12,9 @@ export default class digitKeys extends React.Component {
         return (
             <div className="input-keys">
                 <div className="function-keys">
-                    <OperatorKey label="AC" />
-                    <OperatorKey label="±" />
-                    <OperatorKey label="%" />
+                    <OperatorKey label="EEX" />  
+                    <OperatorKey label="CLX" /> 
+                    <OperatorKey label="ex" /> 
                 </div>
                 <div className="digit-keys">
                     <OperatorKey label="Clear" />

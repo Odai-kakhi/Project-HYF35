@@ -15,7 +15,6 @@ export default class operatorKeys extends React.Component {
             <OperatorKey label="-" />
             <OperatorKey label="+" />
             <OperatorKey label="Enter" />
-       
           </div>
 
 			

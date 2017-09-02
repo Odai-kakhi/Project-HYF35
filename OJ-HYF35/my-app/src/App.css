@@ -17,7 +17,7 @@ button:active {
 }
 
 .calculator {
-width: 648px;
+width: 565px;
 height: 20%;
 background: black;
 display: flex;
@@ -120,3 +120,6 @@ background: linear-gradient(to bottom, rgba(252,156,23,0) 0%, rgba(247,126,27,1)
   display: flex;
 
 }
+
+  /*@media (min-width: 500px) and (max-width: 600px) {
+  }*/
