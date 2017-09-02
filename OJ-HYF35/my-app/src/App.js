@@ -1,77 +1,23 @@
-import React from 'react';
-import store from './store';
-import * as input from './actions/input';
-import './App.css';
+import React from 'react'
+import Screen from './components/screen'
+import DigitKeys from './components/digitKeys'
+import OperatorKeys from './components/operatorKeys'
+import MathKeys from './components/mathKeys'
+import './App.css'
 
 class App extends React.Component {
 
-componentWillMount() {
-    this.subscription = store.subscribe(state => {
-      this.setState(state)
-    })
-
-  }
-
-  componentWillUnmount() {
-    this.subscription.remove()
-  }
- 
   render() {
-    
-    const { value, displayValue } = this.state
-    const i = value.length
-   
-    return (  
-    <div className="calculator">
-        <div className="calculator-display">{value[i-3]}</div>
-        <div className="calculator-display">{value[i-2]}</div>
-        <div className="calculator-display">{value[i-1]}</div>
-        <div className="calculator-display">{displayValue}</div>
 
+    return (
+      <div className="calculator">
+        <Screen />
         <div className="calculator-keypad">
-          <div className="input-keys">
-            <div className="function-keys">
-              <button className="calculator-key key-clear" onClick={()=>input.clearDisplay()}>AC</button>
-              <button className="calculator-key key-sign" onClick={()=> input.toggleSing()}>±</button>
-              <button className="calculator-key key-percent" onClick={()=> input.inputPercent()}>%</button>
-            </div>
-            <div className="digit-keys">
-               <button className="calculator-key key-clear" onClick={()=>input.clear()}>Clear</button>
-              <button className="calculator-key key-0" onClick={() =>
-              input.inputDigit(0)}>0</button>
-              <button className="calculator-key key-dot" onClick={() => input.inputDot()}>●</button>
-              <button className="calculator-key key-1" onClick={()=> input.inputDigit(1)}>1</button>
-              <button className="calculator-key key-2" onClick={()=> input.inputDigit(2)}>2</button>
-              <button className="calculator-key key-3" onClick={()=> input.inputDigit(3)}>3</button>
-              <button className="calculator-key key-4" onClick={()=> input.inputDigit(4)}>4</button>
-              <button className="calculator-key key-5" onClick={()=> input.inputDigit(5)}>5</button>
-              <button className="calculator-key key-6" onClick={()=> input.inputDigit(6)}>6</button>
-              <button className="calculator-key key-7" onClick={()=> input.inputDigit(7)}>7</button>
-              <button className="calculator-key key-8" onClick={()=> input.inputDigit(8)}>8</button>
-              <button className="calculator-key key-9" onClick={() => input.inputDigit(9)}>9</button>
-            </div>
-            </div>
-          <div className="operator-keys">
-            <button className="calculator-key key-divide" onClick={()=>input.performOperation('/')}>÷</button>
-            <button className="calculator-key key-multiply" onClick={()=>input.performOperation('*')}>×</button>
-            <button className="calculator-key key-subtract" onClick={()=>input.performOperation('-')}>−</button>
-            <button className="calculator-key key-add" onClick={()=>input.performOperation('+')}>+</button>
-            <button className="calculator-key key-equals" onClick={() => input.enterFunction()}>Enter</button>
-          </div>
-          <div className="math-keys">
-            <button className="calculator-key key-COS" onClick={()=>input.performOperation('cos')}>COS</button>
-            <button className="calculator-key key-SIN" onClick={()=>input.performOperation('sin')}>SIN</button>
-            <button className="calculator-key key-LOG" onClick={()=>input.performOperation('log')}>LOG</button>
-            <button className="calculator-key key-ARC">ARC</button>
-            <button className="calculator-key key-TAN" onClick={()=>input.performOperation('tan')}>TAN</button>
-          </div>
-          <div className="math-keys">
-            <button className="calculator-key key-COS">COS</button>
-            <button className="calculator-key key-SIN">SIN</button>
-            <button className="calculator-key key-LOG">LOG</button>
-            <button className="calculator-key key-ARC">ARC</button>
-            <button className="calculator-key key-TAN">TAN</button>
-          </div>
+          <DigitKeys />
+          <OperatorKeys />
+          <MathKeys />
+          <MathKeys />
+
 
         </div>
       </div>

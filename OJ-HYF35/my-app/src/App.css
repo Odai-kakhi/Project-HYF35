@@ -73,17 +73,17 @@ line-height: 80px;
 .calculator .function-keys .calculator-key {
 font-size: 2em;
 }
-.calculator .function-keys .key-multiply {
+.calculator .function-keys .key-* {
 line-height: 50px;
 }
 .calculator .digit-keys .calculator-key {
 font-size: 1.7em;
 }
-/* .calculator .digit-keys .key-0 {
+.calculator .digit-keys .key-0 {
 width: 80px;
 text-align: left;
 padding-left: 32px;
-} */
+}
 .calculator .digit-keys .key-dot {
 padding-top: 1em;
 font-size: 0.75em;
@@ -93,7 +93,7 @@ color: white;
 border-right: 0;
 font-size: 3em;
 }
-.calculator .operator-keys  .key-equals {
+.calculator .operator-keys  .key-Enter {
   font-size: 1.7em;
 }
 .calculator .function-keys {
