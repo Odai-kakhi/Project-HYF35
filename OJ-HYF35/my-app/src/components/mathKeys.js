@@ -30,7 +30,7 @@ export default class mathKeys extends React.Component {
                 <OperatorKey label="√x" /> 
                 <OperatorKey label="¹/x" /> 
                 <OperatorKey label="xʸ" /> 
-                <OperatorKey label="Π" /> 
+                <OperatorKey label="π" /> 
             </div>
             
          </div>
