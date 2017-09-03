@@ -27,9 +27,9 @@ export default class mathKeys extends React.Component {
             <div className="math-keys">
                
                 <OperatorKey label="x↔y" /> 
-                <OperatorKey label="√" /> 
-                <OperatorKey label="1/x" /> 
-                <OperatorKey label="γx" /> 
+                <OperatorKey label="√x" /> 
+                <OperatorKey label="¹/x" /> 
+                <OperatorKey label="xʸ" /> 
                 <OperatorKey label="Π" /> 
             </div>
             

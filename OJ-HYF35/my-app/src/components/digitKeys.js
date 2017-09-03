@@ -14,7 +14,7 @@ export default class digitKeys extends React.Component {
                 <div className="function-keys">
                     <OperatorKey label="EEX" />  
                     <OperatorKey label="CLX" /> 
-                    <OperatorKey label="ex" /> 
+                    <OperatorKey label="eˣ" /> 
                 </div>
                 <div className="digit-keys">
                     <OperatorKey label="Clear" />
