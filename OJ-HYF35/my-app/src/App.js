@@ -1,5 +1,5 @@
 import React from 'react'
-import Screen from './components/screen'
+import Screen from './components/screen' // the file name have to be Screen
 import DigitKeys from './components/digitKeys'
 import OperatorKeys from './components/operatorKeys'
 import MathKeys from './components/mathKeys'
@@ -13,9 +13,10 @@ class App extends React.Component {
       <div className="calculator">
         <Screen />
         <div className="calculator-keypad">
+          <MathKeys />
           <DigitKeys />
           <OperatorKeys />
-          <MathKeys />
+          
           
 
 

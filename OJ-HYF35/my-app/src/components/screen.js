@@ -17,7 +17,8 @@ export default class screen extends React.Component {
 	  }
 	
 	render() {
-		const { value, displayValue } = this.state
+		const { value, displayValue } = this.state // change value to stack 
+		// const [x,y,z,t] = stack
 		const i = value.length
 
 		return (

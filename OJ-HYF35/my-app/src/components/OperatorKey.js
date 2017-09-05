@@ -14,6 +14,7 @@ export default class OperatorKey extends React.Component {
 		const {label} = this.props
 		return (
 			<button className= {`calculator-key key-${label}`} onClick={()=> input.performOperation(label)}>
+				{/*just send the string (this key was pressed)*/}
 				{label}
 			</button>
 		)

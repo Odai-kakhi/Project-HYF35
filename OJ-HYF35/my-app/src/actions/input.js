@@ -106,7 +106,7 @@ export function performOperation(operator){
 export function inputDigit(digit) {
   const { displayValue, dot } = store.state 
   if (digit === '.') {
-    if (!dot) {
+    if (!dot) { // if (displayValue.indxOf('.') === -1)
       store.setState({
         displayValue: displayValue === '' ? '0' + String(digit) : displayValue + digit,
         dot : true

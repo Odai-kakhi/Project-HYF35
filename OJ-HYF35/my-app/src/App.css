@@ -1,125 +1,170 @@
 button {
-display: block;
-background: none;
-border: none;
-padding: 0;
-font-family: inherit;
-user-select: none;
-cursor: pointer;
-outline: none;
+  position:relative;
+	float:left;
+	height:35px;
+	width:50px;
+	margin-top: 10px;
+	font-family:"geometry";
+	font-size:14pt;
+	color: rgba(255,255,255,0.4);
+    text-shadow:1px 1px 1px rgba(255,255,255,1), 
+				0px 0 0 #692C01,
+				0px 1px 1px rgba(255,255,255,1);
+	background: black;
+	border-radius:18px;
+	border:1px solid;
+	border-bottom-color:rgba(0,0,0,0.7);
+	border-top-color:rgba(0,0,0,0.5);
+	border-right-color:rgba(0,0,0,0.6);
+	border-left-color:rgba(0,0,0,0.6);
+	border-color:#854D00;
+	box-shadow:inset 0px -2px 3px 3px rgba(80,40,0,0.2),
+				0px 2px 2px rgba(0,0,0,0.8),
+				0px 0px 4px 2px rgba(255,215,30,0.6),
+				inset -1px -1px 1px 1px rgba(255,255,255,0.3),
+				inset 0px -1px 1px rgba(255,255,255,0.3),
+				inset 0px -2px 2px rgba(70,50,40,0.8),
+				inset 0px -7px 2px rgba(90,50,40,0.3),
+				0px 0px 6px 2px rgba(150,130,100,1),
+				0px 0px 0px 5px rgba(255,255,255,0.5),
+				0px 0px 6px 6px rgba(0,0,0,0.1),
+				0px 2px 3px rgba(150,130,100,0.8), 
+				0px 4px 1px 1px rgba(255,255,255,0.7);
 }
 
-button:hover {background-color: #3e8e41}
 
 button:active {
-  background-color: #3e8e41;
   transform: translateY(4px);
 }
 
 .calculator {
-width: 565px;
-height: 20%;
-background: black;
-display: flex;
-flex-direction: column;
-margin: auto;
-margin-top: 15px;
-}
+  position:relative;
+	width:400px;
+	height:550px;
+	margin: auto;
+  margin-top: 15px;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  -o-user-select:none;
+  user-select:none;
+	background: rgba(230,220,210,1);
+	border-radius:60px;
+	box-shadow:0px -100px 500px 80px rgba(255,255,255,0.2),
+				0px -130px 800px 30px rgba(255,140,30,0.1),
+				inset 0px -11px 30px rgba(55,45,35,0.6),
+				inset 0px -7px 8px rgba(55,45,35,0.7),
+				inset 0px -1px 1px rgba(255,255,255,0.4),
+				inset 0px 20px 3px rgba(255,255,255,0.2),
+				0px 17px 27px rgba(0,0,0,0.7),
+				0px 4px 3px rgba(0,0,0,0.8),
+				-2px -2px 2px rgba(0,0,0,0.5),
+				inset 1px 1px 1px rgba(255,255,255,0.5),
+				inset 0px 2px 2px rgba(0,0,0,0.2),
+				inset 1px 0px 2px rgba(0,0,0,0.4),
+				inset -1px 0px 2px rgba(0,0,0,0.4);}
 
 .calculator-display {
-color: white;
-background: #1c191c;
-height: 50px;
-font-size: 2.5em;
-padding: 0 30px;
-text-align: right;
-flex: 1;
-border-bottom-style: solid;
-border-bottom-color: white;
-border-bottom-width: thin;
+	position:relative;
+	display:block;
+	width:385px;
+	height:30px;
+	line-height:28px;
+	margin:auto;
+	top:24px;
+	font-family:digital-7;
+	font-size:20pt;
+	text-align:right;
+	padding-right:9px;
+	box-sizing:border-box;
+	background:rgba(206,206,182,0.7);
+	border-radius:60px;
+	border:1px solid rgba(255,255,255,0.7);
+	box-shadow:inset 0px -3px 10px rgba(0,0,0,0.05),
+				inset 1px 3px 9px rgba(0,0,0,0.3),
+				inset 1px 1px 1px rgba(0,0,0,0.2),
+				inset -1px -1px 1px rgba(0,0,0,0.1),
+				inset 0px 2px 1px 2px rgba(0,0,0,0.1);
 
 }
 
-.calculator-keypad {
-height: 400px;
-
-display: flex;
-}
-
-.calculator .input-keys {
-width: 240px;
-}
-
-.calculator .function-keys {
-display: flex;
-}
-
-.calculator .digit-keys {
-background: #e0e0e7;
-
-display: flex;
-flex-direction: row;
-flex-wrap: wrap-reverse;
-}
-
-.calculator-key {
-width: 80px;
-height: 80px;
-border-top: 1px solid #777;
-border-right: 1px solid #666;
-text-align: center;
-line-height: 80px;
-}
-.calculator .function-keys .calculator-key {
-font-size: 2em;
-}
-.calculator .function-keys .key-* {
-line-height: 50px;
-}
-.calculator .digit-keys .calculator-key {
-font-size: 1.7em;
-}
-.calculator .digit-keys .key-0 {
-width: 80px;
-text-align: left;
-padding-left: 32px;
-}
-.calculator .digit-keys .key-dot {
-padding-top: 1em;
-font-size: 0.75em;
-}
-.calculator .operator-keys .calculator-key {
-color: white;
-border-right: 0;
-font-size: 3em;
-}
-.calculator .operator-keys  .key-Enter {
-  font-size: 1.7em;
-}
-.calculator .function-keys {
-background: linear-gradient(to bottom, rgba(202,202,204,1) 0%, rgba(196,194,204,1) 100%);
-}
-.calculator .operator-keys {
-background: linear-gradient(to bottom, rgba(252,156,23,0) 0%, rgba(247,126,27,1) 100%);
-}
-
-.calculator .math-keys .calculator-key {
-color: white;
-border-right: 0;
-font-size: 1.5em;
-}
-
-.calculator .math-keys {
-border-right: 1px solid #666;
-border-left: 1px solid #666;
-border-bottom: 1px solid #666;
-background: linear-gradient(to bottom, rgba(252,156,23,0) 0%, rgba(247,126,27,1) 100%);
-}
-
-.math-keys-contianer{
+.Keyboard--row{
   display: flex;
+  justify-content:space-between	;
 
 }
 
-  /*@media (min-width: 500px) and (max-width: 600px) {
-  }*/
+.calculator-keypad{
+  position: relative;
+  top: 15px;
+  padding: 15px;
+}
+
+.calculator .Keyboard--row  .key-Enter {
+  font-size: 1.7em;
+  width: 215px;
+  background-color: #493D26;
+}
+
+.calculator .Keyboard--row  .key-CHS {
+  background-color: #493D26;
+}
+
+.calculator .Keyboard--row  .key-EEX{
+  background-color: #493D26;
+}
+
+.calculator .Keyboard--row  .key-TAN{
+  background-color: #493D26;
+}
+
+.calculator .Keyboard--row  .key-1{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-2{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-3{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-4{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-5{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-6{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-7{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-8{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-9{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-0{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-Clear{
+  background-color: 	#835C3B;
+}
+
+
+
+
+
+
+

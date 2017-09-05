@@ -1,6 +1,6 @@
 export default {
 	
-    value : [],
+    value : [], //stack (change the name)
     displayValue : "",
     dot : false,
   
