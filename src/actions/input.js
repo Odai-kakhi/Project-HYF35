@@ -94,6 +94,10 @@ export function performOperation(key) {
       newStack[3] = Math.log(newStack[3])
       Operator = String(key)
       break;
+      case 'CHS':
+      newStack[3] = String(newStack[3]).charAt(0) === '-' ? String(newStack[3]).substr(1) : '-' + String(newStack[3])
+      Operator = String(key)
+      break;
     case 'LN':
       newStack[3] = Math.ln(newStack[3])
       Operator = String(key)
