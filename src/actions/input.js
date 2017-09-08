@@ -20,7 +20,8 @@ export function performOperation(key) {
     
     if (Operator === 'EEX') {
       if (newStack[3][newStack[3].indexOf('e')+2]  === '0') {
-        newStack[3] = newStack[3].replace('0', key)
+        newStack[3] = newStack[3].replace('+0', '+' + key)
+        newStack[3] = newStack[3].replace('-0', '-' + key)
       }else if (newStack[3].indexOf('e') === newStack[3].length -3) {
         newStack[3] = newStack[3] + key
       }
@@ -120,19 +121,6 @@ export function performOperation(key) {
       newStack[3] = Math.log10(Number(newStack[3]))
       Operator = String(key)
       break;
-    case 'CHS':
-      if (newStack[3].indexOf('e') !== -1) {
-        if (newStack[3].indexOf('+') !== -1) {
-          newStack[3] = newStack[3].replace('+', '-')
-        } else {
-          newStack[3] = newStack[3].replace('-', '+')
-        }
-    } else {
-      newStack[3] = -1 * Number(Number(newStack[3]))
-      Operator = String(key)
-    }
-      
-      break;
     case 'LN':
       newStack[3] = Math.log(Number(newStack[3]))
       Operator = String(key)
@@ -179,10 +167,25 @@ export function performOperation(key) {
       newStack[3] = Math.PI
       break;
     case 'EEX':
-      if (Operator !== 'EEX' && String(newStack[3]).indexOf('e+')=== -1) {
+      if ( String(newStack[3]).indexOf('e')=== -1) {
         newStack[3] = newStack[3] + 'e+0'
-        Operator = String(key)
-      }  
+        
+      }
+      Operator = String(key)
+      break;
+      case 'CHS':
+      if (String(newStack[3]).indexOf('e') !== -1) {
+        newStack[3] = String(newStack[3])
+        if (newStack[3].indexOf('e+') !== -1) {
+          newStack[3] = newStack[3].replace('e+', 'e-')
+        } else {
+          newStack[3] = newStack[3].replace('e-', 'e+')
+        }
+    } else {
+      newStack[3] = -1 * Number(Number(newStack[3]))
+      
+    }
+    
       break;
       case 'STO':
       newMemory = newStack[3]
@@ -200,7 +203,7 @@ export function performOperation(key) {
       // Operator = String(key)
       break;
   }
-
+  console.log(Operator)
   console.log(newStack)
   store.setState({
     stack: newStack,
