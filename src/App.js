@@ -13,10 +13,6 @@ class App extends React.Component {
         <Screen />
         <div className="calculator-keypad">
           <KeyPad />
-         
-          
-
-
         </div>
       </div>
 
