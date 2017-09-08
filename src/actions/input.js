@@ -121,7 +121,7 @@ export function performOperation(key) {
       Operator = String(key)
       break;
     case 'CHS':
-      if (Operator === 'EEX') {
+      if (newStack[3].indexOf('e') !== -1) {
         if (newStack[3].indexOf('+') !== -1) {
           newStack[3] = newStack[3].replace('+', '-')
         } else {
