@@ -19,9 +19,9 @@ export function performOperation(key) {
 
     
     if (Operator === 'EEX') {
-      if (newStack[3][newStack[3].indexOf('+')+1]  === '0') {
-        newStack[3] = newStack[3].replace('e+0', 'e+'+key)
-      }else if (newStack[3].indexOf('+') === newStack[3].length -2) {
+      if (newStack[3][newStack[3].indexOf('e')+2]  === '0') {
+        newStack[3] = newStack[3].replace('0', key)
+      }else if (newStack[3].indexOf('e') === newStack[3].length -3) {
         newStack[3] = newStack[3] + key
       }
       
@@ -61,8 +61,13 @@ export function performOperation(key) {
       handelStackOrder()
       break;
     case '-':
-      newStack[3] = Number(newStack[2]) - newStack[3]
-      handelStackOrder()
+      if (Operator === 'EEX') {
+        newStack[3] = newStack[3].replace('+0', '-0')
+      } else {
+        newStack[3] = Number(newStack[2]) - newStack[3]
+        handelStackOrder()
+      }  
+      
       break;
     case 'x':
     case '*':  
@@ -110,9 +115,12 @@ export function performOperation(key) {
       }
       Operator = String(key)
       break;
-
+    case 'eˣ':
+    newStack[3] = Math.exp(Number(newStack[3]))
+    Operator = String(key)
+      break;
     case 'LOG':
-      newStack[3] = Math.log(Number(newStack[3]))
+      newStack[3] = Math.log10(Number(newStack[3]))
       Operator = String(key)
       break;
     case 'CHS':
@@ -120,7 +128,7 @@ export function performOperation(key) {
       Operator = String(key)
       break;
     case 'LN':
-      newStack[3] = Math.ln(Number(newStack[3]))
+      newStack[3] = Math.log(Number(newStack[3]))
       Operator = String(key)
       break;
     case 'CLX':
