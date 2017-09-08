@@ -67,6 +67,8 @@ button:active {
 .calculator-display {
 	position:relative;
 	display:block;
+	word-wrap: break-word;
+	overflow: hidden;
 	width:385px;
 	height:30px;
 	line-height:28px;
