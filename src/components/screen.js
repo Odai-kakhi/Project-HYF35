@@ -9,11 +9,10 @@ export default class screen extends React.Component {
 		this.subscription = store.subscribe(state => {
 		  this.setState(state)
 		})
-	
 	  }
 	
 	  componentWillUnmount() {
-		this.subscription.remove()
+			this.subscription.remove()	
 	  }
 	
 	render() {

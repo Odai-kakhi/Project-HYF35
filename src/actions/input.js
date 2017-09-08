@@ -65,15 +65,24 @@ export function performOperation(key) {
       handelStackOrder()
       break;
     case 'x':
+    case '*':  
       newStack[3] = Number(newStack[3]) * newStack[2]
       handelStackOrder()
       break;
     case '÷':
+    case '/':  
       if (newStack[3] !== 0) {
         newStack[3] = newStack[2] / Number(newStack[3])
         handelStackOrder()
       }
       break;
+    case 'ARC':
+      if (Operator === 'ARC') {
+        Operator = ''
+      } else {
+        Operator = String(key)
+      }
+      break;  
     case 'COS':
 
       if (Operator === 'ARC') {
@@ -115,6 +124,7 @@ export function performOperation(key) {
       Operator = String(key)
       break;
     case 'CLX':
+    case 'Backspace':  
       newStack[3] = 0
       Operator = String(key)
       break;
