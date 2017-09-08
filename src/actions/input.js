@@ -61,12 +61,9 @@ export function performOperation(key) {
       handelStackOrder()
       break;
     case '-':
-      if (Operator === 'EEX') {
-        newStack[3] = newStack[3].replace('+0', '-0')
-      } else {
         newStack[3] = Number(newStack[2]) - newStack[3]
         handelStackOrder()
-      }  
+      
       
       break;
     case 'x':
@@ -124,8 +121,17 @@ export function performOperation(key) {
       Operator = String(key)
       break;
     case 'CHS':
+      if (Operator === 'EEX') {
+        if (newStack[3].indexOf('+') !== -1) {
+          newStack[3] = newStack[3].replace('+', '-')
+        } else {
+          newStack[3] = newStack[3].replace('-', '+')
+        }
+    } else {
       newStack[3] = -1 * Number(Number(newStack[3]))
       Operator = String(key)
+    }
+      
       break;
     case 'LN':
       newStack[3] = Math.log(Number(newStack[3]))
