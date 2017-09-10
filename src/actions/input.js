@@ -55,6 +55,7 @@ export function performOperation(key) {
       for (let i = 0; i <= 2; i++) {
         newStack[i] = Number(newStack[i + 1])
       }
+      newStack[3] = Number(newStack[3])
       Operator = String(key)
       break;
     case '+':
