@@ -13,11 +13,7 @@ export default class Digit extends React.Component {
 	render() {
 		const {label} = this.props
 		return (
-			<button className= {`calculator-key key-${label}`} onClick={()=> input.inputDigit(label)}> 
-				{/*change the function (inputDigit) make it one for the all buttons
-				onClick for the keypad 
-				push the string to the calc proceser
-				*/}
+			<button className= {`calculator-key key-${label}`} onClick={()=> input.performOperation(label)}  >
 				{label}
 			</button>
 		)

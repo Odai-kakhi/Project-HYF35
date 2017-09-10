@@ -1,0 +1,168 @@
+button {
+  position:relative;
+	float:left;
+	height:35px;
+	width:50px;
+	margin-top: 10px;
+	font-family:"geometry";
+	font-size:14pt;
+	color: rgba(255,255,255,0.4);
+    text-shadow:1px 1px 1px rgba(255,255,255,1), 
+				0px 0 0 #692C01,
+				0px 1px 1px rgba(255,255,255,1);
+	background: black;
+	border-radius:18px;
+	border:1px solid;
+	border-bottom-color:rgba(0,0,0,0.7);
+	border-top-color:rgba(0,0,0,0.5);
+	border-right-color:rgba(0,0,0,0.6);
+	border-left-color:rgba(0,0,0,0.6);
+	border-color:#854D00;
+	box-shadow:inset 0px -2px 3px 3px rgba(80,40,0,0.2),
+				0px 2px 2px rgba(0,0,0,0.8),
+				0px 0px 4px 2px rgba(255,215,30,0.6),
+				inset -1px -1px 1px 1px rgba(255,255,255,0.3),
+				inset 0px -1px 1px rgba(255,255,255,0.3),
+				inset 0px -2px 2px rgba(70,50,40,0.8),
+				inset 0px -7px 2px rgba(90,50,40,0.3),
+				0px 0px 6px 2px rgba(150,130,100,1),
+				0px 0px 0px 5px rgba(255,255,255,0.5),
+				0px 0px 6px 6px rgba(0,0,0,0.1),
+				0px 2px 3px rgba(150,130,100,0.8), 
+				0px 4px 1px 1px rgba(255,255,255,0.7);
+}
+
+
+button:active {
+  transform: translateY(4px);
+}
+
+.calculator {
+  position:relative;
+	width:400px;
+	height:550px;
+	margin: auto;
+  margin-top: 15px;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  -o-user-select:none;
+  user-select:none;
+	background: rgba(230,220,210,1);
+	border-radius:60px;
+	box-shadow:0px -100px 500px 80px rgba(255,255,255,0.2),
+				0px -130px 800px 30px rgba(255,140,30,0.1),
+				inset 0px -11px 30px rgba(55,45,35,0.6),
+				inset 0px -7px 8px rgba(55,45,35,0.7),
+				inset 0px -1px 1px rgba(255,255,255,0.4),
+				inset 0px 20px 3px rgba(255,255,255,0.2),
+				0px 17px 27px rgba(0,0,0,0.7),
+				0px 4px 3px rgba(0,0,0,0.8),
+				-2px -2px 2px rgba(0,0,0,0.5),
+				inset 1px 1px 1px rgba(255,255,255,0.5),
+				inset 0px 2px 2px rgba(0,0,0,0.2),
+				inset 1px 0px 2px rgba(0,0,0,0.4),
+				inset -1px 0px 2px rgba(0,0,0,0.4);}
+
+.calculator-display {
+	position:relative;
+	display:block;
+	word-wrap: break-word;
+	overflow: hidden;
+	width:385px;
+	height:30px;
+	line-height:28px;
+	margin-left: 7px;
+	top:24px;
+	font-family:digital-7;
+	font-size:20pt;
+	padding-left:9px;
+	box-sizing:border-box;
+	background:rgba(206,206,182,0.7);
+	border-radius:60px;
+	border:1px solid rgba(255,255,255,0.7);
+	box-shadow:inset 0px -3px 10px rgba(0,0,0,0.05),
+				inset 1px 3px 9px rgba(0,0,0,0.3),
+				inset 1px 1px 1px rgba(0,0,0,0.2),
+				inset -1px -1px 1px rgba(0,0,0,0.1),
+				inset 0px 2px 1px 2px rgba(0,0,0,0.1);
+}
+
+.Keyboard--row{
+  display: flex;
+  justify-content:space-between	;
+
+}
+
+.calculator-keypad {
+  position: relative;
+  top: 15px;
+  padding: 15px;
+}
+
+.calculator .Keyboard--row  .key-Enter {
+  font-size: 1.7em;
+  width: 135px;
+  background-color: #493D26;
+}
+
+.calculator .Keyboard--row  .key-CHS {
+  background-color: #493D26;
+}
+
+.calculator .Keyboard--row  .key-EEX{
+  background-color: #493D26;
+}
+
+.calculator .Keyboard--row  .key-TAN{
+  background-color: #493D26;
+}
+
+.calculator .Keyboard--row  .key-CLX{
+  background-color: #493D26;
+}
+
+
+.calculator .Keyboard--row  .key-1{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-2{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-3{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-4{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-5{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-6{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-7{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-8{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-9{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-0{
+  background-color: 	#835C3B;
+}
+
+.calculator .Keyboard--row  .key-π{
+  background-color: 	#835C3B;
+}
