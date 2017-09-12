@@ -1,7 +1,10 @@
 import store from '../store'
 
 export function performOperation(key) {
-  const { stack, lastOperator, memory } = store.state
+  store.setState (execute(store.state, key))  
+}
+export function execute(state,key) {
+  const { stack, lastOperator, memory } = state
   let newStack = [...stack]
   let Operator = lastOperator
   let newMemory = memory
@@ -206,7 +209,8 @@ export function performOperation(key) {
   }
   console.log(Operator)
   console.log(newStack)
-  store.setState({
+  document.activeElement.blur();
+  return ({
     stack: newStack,
     lastOperator: Operator,
     memory: newMemory
