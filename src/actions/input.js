@@ -145,9 +145,9 @@ export function execute(state,key) {
       newStack[0] = i
       break;
     case 'x↔y':
-      i = Number(newStack[3])
+      const g = Number(newStack[3])
       newStack[3] = newStack[2]
-      newStack[2] = i
+      newStack[2] = g
       Operator = String(key)
 
       break;
