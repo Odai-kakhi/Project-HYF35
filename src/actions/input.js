@@ -1,206 +1,204 @@
 import store from '../store'
-
-export function performOperation(key) {
-  store.setState (execute(store.state, key))  
+import * as key from '../components/KeyCodes'
+export function performOperation(value) {
+  store.setState (execute(store.state, value))  
 }
-export function execute(state,key) {
+export function execute(state,value) {
   const { stack, lastOperator, memory } = state
   let newStack = [...stack]
   let Operator = lastOperator
   let newMemory = memory
-  switch (key) {
-    case '0':
-    case '1':
-    case '2':
-    case '3':
-    case '4':
-    case '5':
-    case '6':
-    case '7':
-    case '8':
-    case '9':
+  switch (value) {
+    case key.D0:
+    case key.D1:
+    case key.D2:
+    case key.D3:
+    case key.D4:
+    case key.D5:
+    case key.D6:
+    case key.D7:
+    case key.D8:
+    case key.D9:
 
-    
-    if (Operator === 'EEX') {
-      if (newStack[3][newStack[3].indexOf('e')+2]  === '0') {
-        newStack[3] = newStack[3].replace('+0', '+' + key)
-        newStack[3] = newStack[3].replace('-0', '-' + key)
-      }else if (newStack[3].indexOf('e') === newStack[3].length -3) {
-        newStack[3] = newStack[3] + key
+    if (Operator === key.EEX) {
+      if (newStack[0][newStack[0].indexOf('e')+2]  === '0') {
+        newStack[0] = newStack[0].replace('+0', '+' + value)
+        newStack[0] = newStack[0].replace('-0', '-' + value)
+      }else if (newStack[0].indexOf('e') === newStack[0].length -3) {
+        newStack[0] = newStack[0] + value
       }
       
     } else {
       if (Operator) {
-        if (Operator !== 'Enter') {
-          for (let i = 0; i <= 2; i++) {
-            newStack[i] = newStack[i + 1]
+        if (Operator !== key.ENTER) {
+          for (let i = 3; i >= 1; i--) {
+            newStack[i] = newStack[i - 1]
           }
         }
-        newStack[3] = 0
+        newStack[0] = 0
         Operator = ''
       }
-      newStack[3] = newStack[3] === 0 ? String(key) : newStack[3] + key
+      newStack[0] = newStack[0] === 0 ? value : newStack[0] + value
   }
       
       
       break;
-    case '.':
+    case key.DOT:
       if (Operator) {
-        newStack[3] = 0
+        newStack[0] = 0
         Operator = ''
       }
-      if (String(newStack[3]).indexOf(key) === -1) {
-        newStack[3] = newStack[3] === 0 ? '0' + String(key) : newStack[3] + key
+      if (String(newStack[0]).indexOf(value) === -1) {
+        newStack[0] = newStack[0] === 0 ? '0' + String(value) : newStack[0] + value
       }
       break;
 
-    case 'Enter':
-      for (let i = 0; i <= 2; i++) {
-        newStack[i] = Number(newStack[i + 1])
+    case key.ENTER:
+      for (let i = 3; i >= 1; i--) {
+        newStack[i] = Number(newStack[i - 1])
       }
-      newStack[3] = Number(newStack[3])
-      Operator = String(key)
+      newStack[0] = Number(newStack[0])
+      Operator = String(value)
       break;
-    case '+':
-      newStack[3] = Number(newStack[3]) + newStack[2]
+    case key.ADD:
+      newStack[0] = Number(newStack[0]) + newStack[1]
       handelStackOrder()
       break;
-    case '-':
-        newStack[3] = Number(newStack[2]) - newStack[3]
+    case key.SUB:
+        newStack[0] = Number(newStack[1]) - newStack[0]
         handelStackOrder()
       
       
       break;
-    case 'x':
-    case '*':  
-      newStack[3] = Number(newStack[3]) * newStack[2]
+    case key.MUL:  
+      newStack[0] = Number(newStack[0]) * newStack[1]
       handelStackOrder()
       break;
-    case '÷':
-    case '/':  
-      if (newStack[3] !== 0) {
-        newStack[3] = newStack[2] / Number(newStack[3])
+    case key.DIV:  
+      if (newStack[0] !== 0) {
+        newStack[0] = newStack[1] / Number(newStack[0])
         handelStackOrder()
       }
       break;
-    case 'ARC':
-      if (Operator === 'ARC') {
+    case key.ARC:
+      if (Operator === key.ARC) {
         Operator = ''
       } else {
-        Operator = String(key)
+        Operator = String(value)
       }
       break;  
-    case 'COS':
+    case key.COS:
 
-      if (Operator === 'ARC') {
-        newStack[3] = radiansToDegrees(Math.acos(Number(newStack[3])))
+      if (Operator === key.ARC) {
+        newStack[0] = radiansToDegrees(Math.acos(Number(newStack[0])))
       } else {
-        newStack[3] = Math.cos(degreesToRadians(Number(newStack[3])))
+        newStack[0] = Math.cos(degreesToRadians(Number(newStack[0])))
       }
 
-      Operator = String(key)
+      Operator = String(value)
       break;
-    case 'SIN':
-      if (Operator === 'ARC') {
-        newStack[3] = radiansToDegrees(Math.asin(Number(newStack[3])))
+    case key.SIN:
+      if (Operator === key.ARC) {
+        newStack[0] = radiansToDegrees(Math.asin(Number(newStack[0])))
       } else {
-        newStack[3] = Math.sin(degreesToRadians(Number(newStack[3])))
+        newStack[0] = Math.sin(degreesToRadians(Number(newStack[0])))
       }
 
-      Operator = String(key)
+      Operator = String(value)
       break;
-    case 'TAN':
-      if (Operator === 'ARC') {
-        newStack[3] = radiansToDegrees(Math.atan(Number(newStack[3])))
+    case key.TAN:
+      if (Operator === key.ARC) {
+        newStack[0] = radiansToDegrees(Math.atan(Number(newStack[0])))
       } else {
-        newStack[3] = Math.tan(degreesToRadians(Number(newStack[3])))
+        newStack[0] = Math.tan(degreesToRadians(Number(newStack[0])))
       }
-      Operator = String(key)
+      Operator = String(value)
       break;
-    case 'eˣ':
-    newStack[3] = Math.exp(Number(newStack[3]))
-    Operator = String(key)
+    case key.EXP:
+    newStack[0] = Math.exp(Number(newStack[0]))
+    Operator = String(value)
       break;
-    case 'LOG':
-      newStack[3] = Math.log10(Number(newStack[3]))
-      Operator = String(key)
+    case key.LOG:
+      newStack[0] = Math.log10(Number(newStack[0]))
+      Operator = String(value)
       break;
-    case 'LN':
-      newStack[3] = Math.log(Number(newStack[3]))
-      Operator = String(key)
+    case key.LN:
+      newStack[0] = Math.log(Number(newStack[0]))
+      Operator = String(value)
       break;
-    case 'CLX':
+    case key.CLX:
     case 'Backspace':  
-      newStack[3] = 0
-      Operator = String(key)
+      newStack[0] = 0
+      Operator = String(value)
       break;
-    case 'CLR':
+    case key.CLR:
       newStack = [0, 0, 0, 0]
       Operator = ''
       break;
-    case 'R↓':
-      let i = Number(newStack[3])
-      newStack[3] = newStack[2]
+    case key.ROLL_DOWN:
+      let i = Number(newStack[0])
+      newStack[0] = newStack[1]
       handelStackOrder()
-      newStack[0] = i
+      newStack[3] = i
       break;
-    case 'x↔y':
-      i = Number(newStack[3])
-      newStack[3] = newStack[2]
-      newStack[2] = i
-      Operator = String(key)
+    case key.SWAP:
+      i = Number(newStack[0])
+      newStack[0] = newStack[1]
+      newStack[1] = i
+      Operator = String(value)
 
       break;
-    case '√x':
-      newStack[3] = Math.sqrt(Number(newStack[3]))
-      Operator = String(key)
+    case key.SQRT:
+      newStack[0] = Math.sqrt(Number(newStack[0]))
+      Operator = String(value)
       break;
-    case '¹/x':
-      newStack[3] = 1 / Number(newStack[3])
-      Operator = String(key)
+    case key.RECIPROCAL:
+      newStack[0] = 1 / Number(newStack[0])
+      Operator = String(value)
       break;
-    case 'xʸ':
-      newStack[3] = Math.pow(Number(newStack[3]), newStack[2])
+    case key.POW:
+      newStack[0] = Math.pow(Number(newStack[0]), newStack[1])
       handelStackOrder()
       break;
-    case 'π':
+    case key.PI:
       for (let i = 0; i <= 2; i++) {
         newStack[i] = Number(newStack[i + 1])
       }
-      Operator = String(key)
-      newStack[3] = Math.PI
+      Operator = String(value)
+      newStack[0] = Math.PI
       break;
-    case 'EEX':
-      if ( String(newStack[3]).indexOf('e')=== -1) {
-        newStack[3] = newStack[3] + 'e+0'
+    case key.EEX:
+      if ( String(newStack[0]).indexOf('e')=== -1) {
+        newStack[0] = newStack[0] + 'e+0'
         
       }
-      Operator = String(key)
+      Operator = String(value)
       break;
-      case 'CHS':
-      if (String(newStack[3]).indexOf('e') !== -1) {
-        newStack[3] = String(newStack[3])
-        if (newStack[3].indexOf('e+') !== -1) {
-          newStack[3] = newStack[3].replace('e+', 'e-')
+      case key.CHS:
+      if (String(newStack[0]).indexOf('e') !== -1) {
+        newStack[0] = String(newStack[0])
+        if (newStack[0].indexOf('e+') !== -1) {
+          newStack[0] = newStack[0].replace('e+', 'e-')
         } else {
-          newStack[3] = newStack[3].replace('e-', 'e+')
+          newStack[0] = newStack[0].replace('e-', 'e+')
         }
     } else {
-      newStack[3] = -1 * Number(Number(newStack[3]))
+      newStack[0] = -1 * Number(Number(newStack[0]))
       
     }
     
       break;
-      case 'STO':
-      newMemory = newStack[3]
-      Operator = String(key)
+      case key.STO:
+      newStack[0] = Number(newStack[0])
+      newMemory = newStack[0]
+      Operator = String(value)
        break;
-     case 'RCL':
-     for (let i = 0; i <= 2; i++) {
-       newStack[i] = Number(newStack[i+1])
+     case key.RCL:
+     for (let i = 3; i >= 1; i--) {
+       newStack[i] = Number(newStack[i-1])
      }
-     newStack[3] = newMemory
-     Operator=String(key)
+     newStack[0] = newMemory
+     Operator=String(value)
      break;
       
     default:
@@ -217,9 +215,9 @@ export function execute(state,key) {
   })
 
   function handelStackOrder() {
-    newStack[2] = newStack[1]
-    newStack[1] = newStack[0]
-    Operator = String(key)
+    newStack[1] = newStack[2]
+    newStack[2] = newStack[3]
+    Operator = String(value)
 
   }
   function degreesToRadians(degrees) {
