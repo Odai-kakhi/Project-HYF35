@@ -11,9 +11,9 @@ export default class Digit extends React.Component {
 
 
 	render() {
-		const {label} = this.props
+		const {label, keyCode} = this.props
 		return (
-			<button className= {`calculator-key key-${label}`} onClick={()=> input.performOperation(label)}  >
+			<button className= {`calculator-key key-${label}`} onClick={()=> input.performOperation(keyCode)}  >
 				{label}
 			</button>
 		)

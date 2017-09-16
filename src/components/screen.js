@@ -17,14 +17,14 @@ export default class screen extends React.Component {
 	
 	render() {
 		const { stack } = this.state
-		const i = stack.length
+		
 
 		return (
 			<div >
-				<div className="calculator-display">{stack[i-4]}</div>
-				<div className="calculator-display">{stack[i-3]}</div>
-				<div className="calculator-display">{stack[i-2]}</div>
-				<div className="calculator-display">{stack[i-1]}</div>
+				<div className="calculator-display">{stack[3]}</div>
+				<div className="calculator-display">{stack[2]}</div>
+				<div className="calculator-display">{stack[1]}</div>
+				<div className="calculator-display">{stack[0]}</div>
 			</div>
 		)
 	}
