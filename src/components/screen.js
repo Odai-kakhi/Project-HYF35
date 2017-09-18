@@ -13,7 +13,7 @@ export default class screen extends React.Component {
 	
 	  componentWillUnmount() {
 			this.subscription.remove()	
-	  }
+		}
 	
 	render() {
 		const { stack } = this.state
