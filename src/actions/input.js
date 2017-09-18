@@ -1,10 +1,14 @@
 import store from '../store'
 import * as key from '../components/KeyCodes'
 export function performOperation(value) {
-  store.setState (execute(store.state, value))  
+  store.setState(execute(store.state, value))
 }
-export function execute(state,value) {
-  const { stack, lastOperator, memory } = state
+export function execute(state, value) {
+  const {
+    stack,
+    lastOperator,
+    memory
+  } = state
   let newStack = [...stack]
   let Operator = lastOperator
   let newMemory = memory
@@ -20,28 +24,28 @@ export function execute(state,value) {
     case key.D8:
     case key.D9:
 
-    if (Operator === key.EEX) {
-      if (newStack[0][newStack[0].indexOf('e')+2]  === '0') {
-        newStack[0] = newStack[0].replace('+0', '+' + value)
-        newStack[0] = newStack[0].replace('-0', '-' + value)
-      }else if (newStack[0].indexOf('e') === newStack[0].length -3) {
-        newStack[0] = newStack[0] + value
-      }
-      
-    } else {
-      if (Operator) {
-        if (Operator !== key.ENTER) {
-          for (let i = 3; i >= 1; i--) {
-            newStack[i] = newStack[i - 1]
-          }
+      if (Operator === key.EEX) {
+        if (newStack[0][newStack[0].indexOf('e') + 2] === '0') {
+          newStack[0] = newStack[0].replace('+0', '+' + value)
+          newStack[0] = newStack[0].replace('-0', '-' + value)
+        } else if (newStack[0].indexOf('e') === newStack[0].length - 3) {
+          newStack[0] = newStack[0] + value
         }
-        newStack[0] = 0
-        Operator = ''
+
+      } else {
+        if (Operator) {
+          if (Operator !== key.ENTER) {
+            for (let i = 3; i >= 1; i--) {
+              newStack[i] = newStack[i - 1]
+            }
+          }
+          newStack[0] = 0
+          Operator = ''
+        }
+        newStack[0] = newStack[0] === 0 ? value : newStack[0] + value
       }
-      newStack[0] = newStack[0] === 0 ? value : newStack[0] + value
-  }
-      
-      
+
+
       break;
     case key.DOT:
       if (Operator) {
@@ -65,16 +69,16 @@ export function execute(state,value) {
       handelStackOrder()
       break;
     case key.SUB:
-        newStack[0] = Number(newStack[1]) - newStack[0]
-        handelStackOrder()
-      
-      
+      newStack[0] = Number(newStack[1]) - newStack[0]
+      handelStackOrder()
+
+
       break;
-    case key.MUL:  
+    case key.MUL:
       newStack[0] = Number(newStack[0]) * newStack[1]
       handelStackOrder()
       break;
-    case key.DIV:  
+    case key.DIV:
       if (newStack[0] !== 0) {
         newStack[0] = newStack[1] / Number(newStack[0])
         handelStackOrder()
@@ -86,7 +90,7 @@ export function execute(state,value) {
       } else {
         Operator = String(value)
       }
-      break;  
+      break;
     case key.COS:
 
       if (Operator === key.ARC) {
@@ -115,8 +119,8 @@ export function execute(state,value) {
       Operator = String(value)
       break;
     case key.EXP:
-    newStack[0] = Math.exp(Number(newStack[0]))
-    Operator = String(value)
+      newStack[0] = Math.exp(Number(newStack[0]))
+      Operator = String(value)
       break;
     case key.LOG:
       newStack[0] = Math.log10(Number(newStack[0]))
@@ -127,7 +131,7 @@ export function execute(state,value) {
       Operator = String(value)
       break;
     case key.CLX:
-    case 'Backspace':  
+    case 'Backspace':
       newStack[0] = 0
       Operator = String(value)
       break;
@@ -168,13 +172,13 @@ export function execute(state,value) {
       newStack[0] = Math.PI
       break;
     case key.EEX:
-      if ( String(newStack[0]).indexOf('e')=== -1) {
+      if (String(newStack[0]).indexOf('e') === -1) {
         newStack[0] = newStack[0] + 'e+0'
-        
+
       }
       Operator = String(value)
       break;
-      case key.CHS:
+    case key.CHS:
       if (String(newStack[0]).indexOf('e') !== -1) {
         newStack[0] = String(newStack[0])
         if (newStack[0].indexOf('e+') !== -1) {
@@ -182,25 +186,25 @@ export function execute(state,value) {
         } else {
           newStack[0] = newStack[0].replace('e-', 'e+')
         }
-    } else {
-      newStack[0] = -1 * Number(Number(newStack[0]))
-      
-    }
-    
+      } else {
+        newStack[0] = -1 * Number(Number(newStack[0]))
+
+      }
+
       break;
-      case key.STO:
+    case key.STO:
       newStack[0] = Number(newStack[0])
       newMemory = newStack[0]
       Operator = String(value)
-       break;
-     case key.RCL:
-     for (let i = 3; i >= 1; i--) {
-       newStack[i] = Number(newStack[i-1])
-     }
-     newStack[0] = newMemory
-     Operator=String(value)
-     break;
-      
+      break;
+    case key.RCL:
+      for (let i = 3; i >= 1; i--) {
+        newStack[i] = Number(newStack[i - 1])
+      }
+      newStack[0] = newMemory
+      Operator = String(value)
+      break;
+
     default:
       // Operator = String(key)
       break;
@@ -220,11 +224,12 @@ export function execute(state,value) {
     Operator = String(value)
 
   }
+
   function degreesToRadians(degrees) {
     return (degrees * Math.PI / 180)
   }
+
   function radiansToDegrees(radians) {
     return (radians * 180 / Math.PI)
   }
 }
-

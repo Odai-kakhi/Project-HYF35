@@ -21,10 +21,12 @@ export default class screen extends React.Component {
 
 		return (
 			<div >
-				<div className="calculator-display">{stack[3]}</div>
-				<div className="calculator-display">{stack[2]}</div>
-				<div className="calculator-display">{stack[1]}</div>
-				<div className="calculator-display">{stack[0]}</div>
+				<div className="calculator-display">
+					<div>{stack[3]} </div>
+					<div>{stack[2]} </div>
+					<div>{stack[1]} </div>
+					<div>{stack[0]} </div>
+				</div>
 			</div>
 		)
 	}
