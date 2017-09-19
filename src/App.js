@@ -4,6 +4,8 @@ import KeyPad from './components/KeyPad'
 import * as input from './actions/input'
 import * as Keyboard from './components/KeyboardCode'
 import './App.css'
+import ProgramArea from './components/ProgramArea'
+
 
 
 
@@ -11,7 +13,6 @@ class App extends React.Component {
   
   showScreen () {
   document.getElementById("btn1").classList.toggle("open");
-  document.getElementById("btn1").classList.toggle("close");
   }
 
   componentDidMount() {
@@ -21,32 +22,27 @@ class App extends React.Component {
   componentWillUnmount() {
     document.removeEventListener('keyup', this.handleKeyDown)
   }
-
+    
   handleKeyDown = (event) => {
     let { key } = event
     input.performOperation(Keyboard.keyboardCode[key])
-    console.log(key)
   };
-
-    
-    
-    
   render() {
-
+    
     return (
 
       <div>  
         
       <div className="calculator">
         <button className="screen-button" onClick={()=>this.showScreen()}>
-        
+        Panel
         </button>
         <Screen />
         <div className="calculator-keypad">
           <KeyPad />
         </div>
         <div className='programmedscreen' id='btn1'>
-          <input className='text-area' type='text' />
+          <ProgramArea/>
         </div>
       </div>
     </div>

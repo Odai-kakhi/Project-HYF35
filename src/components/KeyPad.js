@@ -3,11 +3,12 @@ import Key from './Key'
 import * as k from './KeyCodes'
 
 
-export default class digitKeys extends React.Component {
-
+export default class KeyPad extends React.Component {
+    
+    
 	
 	render() {
-
+        
         return (
             <div className="input-keys">
                 <div className="Keyboard--row">
@@ -66,11 +67,10 @@ export default class digitKeys extends React.Component {
                         <Key label="π" keyCode={k.PI} />
                 </div>    
                 
-                
             </div>
-
+            
 			
 		)
 	}
-
+    
 }

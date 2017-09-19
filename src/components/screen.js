@@ -13,7 +13,7 @@ export default class screen extends React.Component {
 	
 	  componentWillUnmount() {
 			this.subscription.remove()	
-	  }
+		}
 	
 	render() {
 		const { stack } = this.state
@@ -22,10 +22,10 @@ export default class screen extends React.Component {
 		return (
 			<div >
 				<div className="calculator-display">
-					<div>{stack[3]} </div>
-					<div>{stack[2]} </div>
-					<div>{stack[1]} </div>
-					<div>{stack[0]} </div>
+					<div id='t'>{stack[3]} </div>
+					<div id='z'>{stack[2]} </div>
+					<div id='y'>{stack[1]} </div>
+					<div id='x'>{stack[0]} </div>
 				</div>
 			</div>
 		)
