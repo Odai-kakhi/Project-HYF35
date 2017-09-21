@@ -2,6 +2,7 @@ import store from '../store'
 import * as input from './input'
 import * as Text from '../components/TextCodes'
 export function ProgramAction(text) {
+    if (text === ''){return}
     const { stack } = store.state
     let newStack = [...stack]
     if (text.indexOf("```")!== -1) {
