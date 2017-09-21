@@ -1,6 +1,7 @@
 import store from '../store'
 import * as input from './input'
 import * as Text from '../components/TextCodes'
+import screen from '../components/screen'
 export function ProgramAction(pro) {
     
     
@@ -10,7 +11,8 @@ export function ProgramAction(pro) {
     function wait(ms) {
         var waitDateOne = new Date();
         while ((new Date()) - waitDateOne <= ms) {
-            //Nothing
+          
+            
         }
         
     }
@@ -38,6 +40,7 @@ export function ProgramAction(pro) {
         
         wait(200)
     }
+    
 
      store.setState({
         stack: newStack

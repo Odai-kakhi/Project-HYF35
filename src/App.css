@@ -249,3 +249,7 @@ button:active {
 	transition: .05s;
 	vertical-align: top;
 }
+
+.container{
+	margin: auto;
+}

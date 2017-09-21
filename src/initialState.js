@@ -5,4 +5,5 @@ export default {
     memory : null,
     program: [],
     programText:'',
+    
 }

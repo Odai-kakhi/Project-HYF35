@@ -235,10 +235,8 @@ export function execute(state, value) {
   }
 
   function waite(ms) {
-    // var x = document.getElementById('x').value = newStack[0]
-    // var y = document.getElementById('y').value = newStack[1]
-    // var z = document.getElementById('z').value = newStack[2]
-    // var t = document.getElementById('t').value = newStack[3]
-    //  document.getElementsByClassName('calculator-display').value = x;
-}
+    
+
+
+  }
 }

@@ -31,7 +31,7 @@ class App extends React.Component {
     
     return (
 
-      <div>  
+      <div className='container'>  
         
       <div className="calculator">
         <button className="screen-button" onClick={()=>this.showScreen()}>
