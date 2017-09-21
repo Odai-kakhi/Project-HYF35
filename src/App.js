@@ -25,7 +25,10 @@ class App extends React.Component {
     
   handleKeyDown = (event) => {
     let { key } = event
-    input.performOperation(Keyboard.keyboardCode[key])
+    if (document.activeElement!==document.getElementById('textArea')) {
+      input.performOperation(Keyboard.keyboardCode[key])
+    }
+    
   };
   render() {
     

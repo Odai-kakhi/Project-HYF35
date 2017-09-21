@@ -4,5 +4,6 @@ export default {
     lastOperator: '',
     memory : null,
     program: [],
-    programText:'',
+    programText: '',
+    recording : false
 }

@@ -1,6 +1,5 @@
 import store from '../store'
 import * as key from '../components/KeyCodes'
-import screen from '../components/screen'
 export function performOperation(value) {
   store.setState(execute(store.state, value))
 }
@@ -9,10 +8,13 @@ export function execute(state, value) {
     stack,
     lastOperator,
     memory,
+    programText,
+    recording
   } = state
   let newStack = [...stack]
   let Operator = lastOperator
   let newMemory = memory
+  let parts = programText
   switch (value) {
     case key.D0:
     case key.D1:
@@ -132,7 +134,6 @@ export function execute(state, value) {
       Operator = String(value)
       break;
     case key.CLX:
-    case 'Backspace':
       newStack[0] = 0
       break;
     case key.CLR:
@@ -211,12 +212,38 @@ export function execute(state, value) {
   }
   console.log(Operator)
   console.log(newStack)
-  // document.activeElement.blur();
-  waite(0)
+  document.activeElement.blur();
+
+  if (recording) {
+    if (Operator === 'enter') {
+      parts = parts + '\n' + newStack[0]
+    } else if (Operator && Operator !== 'eex' ) {
+
+      if (parts.substring(parts.length - 1) === '\n') {
+        parts = parts + Operator
+      } else {
+        parts = parts + '\n' + Operator
+      }
+
+    } else
+      if (parts.indexOf('\n') !== -1) {
+        parts = parts.split('\n')
+        console.log(parts)
+        if (!isNaN(Number(parts[parts.length - 1]))) {
+          parts.pop()
+        }
+        parts.push(String(newStack[0]))
+        parts = parts.join('\n');
+      } else {
+        parts = String(newStack[0])
+      }
+  }
+
   return ({
     stack: newStack,
     lastOperator: Operator,
-    memory: newMemory
+    memory: newMemory,
+    programText: parts
   })
 
   function handelStackOrder() {
@@ -233,12 +260,4 @@ export function execute(state, value) {
   function radiansToDegrees(radians) {
     return (radians * 1260 / 22)
   }
-
-  function waite(ms) {
-    // var x = document.getElementById('x').value = newStack[0]
-    // var y = document.getElementById('y').value = newStack[1]
-    // var z = document.getElementById('z').value = newStack[2]
-    // var t = document.getElementById('t').value = newStack[3]
-    //  document.getElementsByClassName('calculator-display').value = x;
-}
 }
