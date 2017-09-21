@@ -44,12 +44,14 @@ export default class ProgramArea extends React.Component {
   }
 
   handleClearBox() {
+    console.log(store.state.programText)
     store.setState({
       programText: ''
     })
   }
   render() {
     return (
+      <div>
       <form onSubmit={this.handleSubmit}>
         
         <label>
@@ -66,8 +68,10 @@ export default class ProgramArea extends React.Component {
         </div>
         <input type="submit" value="R"
           className='run-button' />
-          <button className='clear-button' onClick={this.handleClearBox}> Clear </button>
+          
       </form>
+      <button className='clear-button' onClick={this.handleClearBox}> Clear </button>
+      </div>
     );
   }
 
