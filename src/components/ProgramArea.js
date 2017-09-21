@@ -4,44 +4,72 @@ import * as program from '../actions/ProgramAction'
 import '../App.css'
 
 export default class ProgramArea extends React.Component {
-  
-	componentWillMount() {
-		this.subscription = store.subscribe(state => {
+
+  componentWillMount() {
+    this.subscription = store.subscribe(state => {
       this.setState(state)
     })
   }
-	
+
   componentWillUnmount() {
     this.subscription.remove()
   }
-  
+
   handleChange(event) {
-    
+
     store.setState({
       programText: event.target.value,
-      program: event.target.value.split('\n')
+
     })
   }
-  
+
   handleSubmit(event) {
-    program.ProgramAction(store.state.program)
-    
+    store.setState({
+      recording: false,
+
+    })
+    program.ProgramAction(store.state.programText)
+
     event.preventDefault()
-    
-    
+
+
   }
-  
-  
+
+  handleCheckBoxChange() {
+
+    store.setState({
+      recording: !store.state.recording,
+
+    })
+  }
+
+  handleClearBox() {
+    store.setState({
+      programText: ''
+    })
+  }
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-      <label>
-      <textarea className='text-area' value={store.state.programText} onChange={this.handleChange} />
-      </label>
-      <input type="submit" value="Run" className='input-button' />
+        
+        <label>
+          <textarea className='text-area' id='textArea' value={store.state.programText} onChange={this.handleChange} />
+        </label>
+        <div className='Record-button'>
+          <input type="checkbox" className='checkbox'
+            checked={store.state.recording}
+            onChange={this.handleCheckBoxChange}
+          />
+          <label className='record-text'>
+            Record
+          </label>
+        </div>
+        <input type="submit" value="R"
+          className='run-button' />
+          <button className='clear-button' onClick={this.handleClearBox}> Clear </button>
       </form>
     );
   }
-  
-  
+
+
 }
