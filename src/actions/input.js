@@ -165,7 +165,7 @@ export function execute(state, value) {
       Operator = String(value)
       break;
     case key.POW:
-      newStack[0] = Math.pow(Number(newStack[0]), newStack[1])
+      newStack[0] = Math.pow(Number(newStack[1]), newStack[0])
       handelStackOrder()
       break;
     case key.PI:
