@@ -1,4 +1,5 @@
 button {
+	outline: none;
 	position: relative;
 	float: left;
 	height: 35px;
@@ -42,6 +43,7 @@ button:active {
 	position: relative;
 	display: block;
 	word-wrap: break-word;
+	overflow: hidden;
 	width: 375px;
 	height: 120px;
 	line-height: 27px;
@@ -224,6 +226,7 @@ button:active {
 }
 
 .run-button {
+	outline: none;
 	position: absolute;
 	top: 522px;
 	left: 28px;
@@ -251,9 +254,9 @@ button:active {
 	vertical-align: top;
 }
 
-.Record-button{
+.Record-button {
 	position: absolute;
-	top: 520px;
+	top: 522px;
 	left: 50px;
 	width: 100px;
 	height: 32px;
@@ -279,9 +282,9 @@ button:active {
 	vertical-align: top;
 }
 
-.clear-button{
+.clear-button {
 	position: absolute;
-	top: 520px;
+	top: 522px;
 	left: 220px;
 	width: 100px;
 	height: 33px;
@@ -305,13 +308,20 @@ button:active {
 	vertical-align: top;
 }
 
-.checkbox{
+.checkbox {
 	position: relative;
 	top: 5px;
 	right: 9px;
 }
 
-.record-text{
+.record-text {
 	position: relative;
 	top: 3px;
 }
+
+/*.screen-div{
+  word-wrap: break-word;
+
+
+}
+*/

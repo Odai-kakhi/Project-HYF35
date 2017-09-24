@@ -5,6 +5,7 @@ import '../App.css'
 
 export default class ProgramArea extends React.Component {
 
+
   componentWillMount() {
     this.subscription = store.subscribe(state => {
       this.setState(state)
@@ -49,13 +50,14 @@ export default class ProgramArea extends React.Component {
       programText: ''
     })
   }
+
   render() {
     return (
       <div>
       <form onSubmit={this.handleSubmit}>
         
         <label>
-          <textarea className='text-area' id='textArea' value={store.state.programText} onChange={this.handleChange} />
+          <textarea className='text-area' id='textArea' value={store.state.programText} onChange={this.handleChange} /> 
         </label>
         <div className='Record-button'>
           <input type="checkbox" className='checkbox'
@@ -74,6 +76,6 @@ export default class ProgramArea extends React.Component {
       </div>
     );
   }
-
-
 }
+
+
