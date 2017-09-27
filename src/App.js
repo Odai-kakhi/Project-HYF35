@@ -35,18 +35,19 @@ class App extends React.Component {
     return (
 
       <div className='container'>  
+        <div className='programmedscreen' id='btn1'>
+          <ProgramArea/>
+        </div>
+      <div className="calculator" >
         
-      <div className="calculator">
-        <button className="screen-button" onClick={()=>this.showScreen()}>
+        {/*<button className="screen-button" onClick={()=>this.showScreen()}>
         Panel
-        </button>
+        </button>*/}
         <Screen />
         <div className="calculator-keypad">
           <KeyPad />
         </div>
-        <div className='programmedscreen' id='btn1'>
-          <ProgramArea/>
-        </div>
+        
       </div>
     </div>
 

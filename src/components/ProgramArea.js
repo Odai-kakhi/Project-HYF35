@@ -66,8 +66,8 @@ export default class ProgramArea extends React.Component {
             Record
           </label>
         </div>
-        <input type="submit" value="R"
-          className='run-button' />
+        <button type="submit" value="R"
+          className='run-button' >R</button>
           <button className='clear-button' onClick={this.handleClearBox}> Clear </button>
       </form>
     );
