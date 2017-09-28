@@ -5,5 +5,7 @@ export default {
     memory : null,
     program: [],
     programText: '',
-    recording : false
+    recording: false,
+    slow: false,
+    currentOperation:0
 }

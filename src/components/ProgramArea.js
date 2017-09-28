@@ -20,10 +20,12 @@ export default class ProgramArea extends React.Component {
 
     store.setState({
       programText: event.target.value,
-
+      currentOperation : 0
     })
   }
-
+  handleStep() {
+    program.Step(store.state.programText)
+  }
   handleSubmit(event) {
     store.setState({
       recording: false,
@@ -32,12 +34,11 @@ export default class ProgramArea extends React.Component {
     program.ProgramAction(store.state.programText)
 
     event.preventDefault()
-
+console.log(event)
 
   }
 
   handleCheckBoxChange() {
-
     store.setState({
       recording: !store.state.recording,
 
@@ -50,16 +51,28 @@ export default class ProgramArea extends React.Component {
       programText: ''
     })
   }
+  handleCheckBoxSlow() {
+    store.setState({
+      slow: !store.state.slow,
+
+    })
+  }
 
   render() {
     return (
       <div>
       <form onSubmit={this.handleSubmit}>
-        
         <label>
           <textarea className='text-area' id='textArea' value={store.state.programText} onChange={this.handleChange} /> 
-        </label>
+        </label> 
         <div className='Record-button'>
+        <input type="checkbox" className='checkbox'
+            checked={store.state.slow}
+            onChange={this.handleCheckBoxSlow}
+          />
+          <label className='slow-text'>
+            Slow
+          </label>  
           <input type="checkbox" className='checkbox'
             checked={store.state.recording}
             onChange={this.handleCheckBoxChange}
@@ -68,11 +81,13 @@ export default class ProgramArea extends React.Component {
             Record
           </label>
         </div>
-        <input type="submit" value="R"
+        <input type="submit" value="Run"
           className='run-button' />
           
       </form>
+      <button className='step-button' onClick={this.handleStep}> Step </button>  
       <button className='clear-button' onClick={this.handleClearBox}> Clear </button>
+       
       </div>
     );
   }
