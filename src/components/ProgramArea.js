@@ -57,10 +57,20 @@ console.log(event)
 
     })
   }
+  changeProgramScreen(screenName) {
+    console.log(screenName)
+    store.setState({
+      programScreen : screenName
+    })
+  }
 
   render() {
     return (
       <div>
+        <div className='SaveScreen' onClick={()=>{this.changeProgramScreen('SaveScreen')}}>
+          Save
+        </div>
+
       <form onSubmit={this.handleSubmit}>
         <label>
           <textarea className='text-area' id='textArea' value={store.state.programText} onChange={this.handleChange} /> 

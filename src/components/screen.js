@@ -14,7 +14,6 @@ export default class screen extends React.Component {
 	  componentWillUnmount() {
 			this.subscription.remove()	
 		}
-	  jalal() {console.log('jalal') }
 	render() {
 		const { stack } = this.state
 		
