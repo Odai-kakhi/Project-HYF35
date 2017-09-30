@@ -70,6 +70,9 @@ console.log(event)
         <div className='SaveScreen' onClick={()=>{this.changeProgramScreen('SaveScreen')}}>
           Save
         </div>
+        <div className='LoadScreen' onClick={()=>{this.changeProgramScreen('LoadScreen')}}>
+          Load
+        </div>
 
       <form onSubmit={this.handleSubmit}>
         <label>

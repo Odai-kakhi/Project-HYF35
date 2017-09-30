@@ -7,7 +7,7 @@ import * as Keyboard from './components/KeyboardCode'
 import './App.css'
 import ProgramArea from './components/ProgramArea'
 import SaveScreen from './components/SaveScreen'
-
+import LoadScreen from './components/LoadScreen'
 
 
 class App extends React.Component {
@@ -42,10 +42,13 @@ class App extends React.Component {
     let screen;
     switch (store.state.programScreen) {
       case 'SaveScreen':
-      screen = (<SaveScreen />);
+        screen = (<SaveScreen />);
         break;
         
-        
+      case 'LoadScreen':
+        screen = (<LoadScreen />)
+        break
+
       default:
         screen = (<ProgramArea />);
         // default is 'ProgramArea'

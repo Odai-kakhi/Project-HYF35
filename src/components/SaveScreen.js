@@ -2,7 +2,7 @@ import React from 'react'
 import store from '../store'
 import '../App.css'
 
-export default class ProgramArea extends React.Component {
+export default class SaveScreen extends React.Component {
 
 
   componentWillMount() {
@@ -21,19 +21,19 @@ export default class ProgramArea extends React.Component {
       programScreen : screenName
     })
   }
-  handleSave(name, description) {
-    console.log(name, description)
+  handleSave(Name, description) {
+    console.log(Name, description)
     // Check browser support
 if (typeof(Storage) !== "undefined") {
   // Store
-  if (Storage.name) {
+  if (Object.keys(localStorage).indexOf(Name) !== -1) {
     if (window.confirm("This program is already exist, do you want to overwrite it?")) {
       description = description + '\n\n```\n' + store.state.programText + '\n```'
-      localStorage.setItem(name, description);
+      localStorage.setItem(Name, description);
     }
   } else {
     description = description + '\n\n```\n' + store.state.programText + '\n```'
-    localStorage.setItem(name, description);
+    localStorage.setItem(Name, description);
   }
   
   
