@@ -67,25 +67,20 @@ console.log(event)
   render() {
     return (
       <div>
+        <div className="local-storge">
         <div className='SaveScreen' onClick={()=>{this.changeProgramScreen('SaveScreen')}}>
           Save
         </div>
         <div className='LoadScreen' onClick={()=>{this.changeProgramScreen('LoadScreen')}}>
           Load
         </div>
-
+        </div>
       <form onSubmit={this.handleSubmit}>
         <label>
           <textarea className='text-area' id='textArea' value={store.state.programText} onChange={this.handleChange} /> 
         </label> 
         <div className='Record-button'>
-        <input type="checkbox" className='checkbox'
-            checked={store.state.slow}
-            onChange={this.handleCheckBoxSlow}
-          />
-          <label className='slow-text'>
-            Slow
-          </label>  
+        
           <input type="checkbox" className='checkbox'
             checked={store.state.recording}
             onChange={this.handleCheckBoxChange}
@@ -93,9 +88,18 @@ console.log(event)
           <label className='record-text'>
             Record
           </label>
+          <div className='slow-button'>
+          <input type="checkbox" className='checkbox'
+            checked={store.state.slow}
+            onChange={this.handleCheckBoxSlow}
+          />
+          <label className='slow-text'>
+            Slow
+          </label>    
+          </div>  
         </div>
-        <input type="submit" value="Run"
-          className='run-button' />
+        <button type="submit" value="Run"
+          className='run-button'>Run</button>
           
       </form>
       <button className='step-button' onClick={this.handleStep}> Step </button>  

@@ -27,17 +27,30 @@ class App extends React.Component {
   }
   componentDidMount() {
     document.addEventListener('keyup', this.handleKeyDown)
+    
+    this.importFromSQL()
   }
   
 
     
   handleKeyDown = (event) => {
+    
     let { key } = event
     if (document.activeElement!==document.getElementById( 'textArea')&& document.activeElement!==document.getElementById( 'description')) {
       input.performOperation(Keyboard.keyboardCode[key])
     }
     
   };
+  importFromSQL() {
+  
+    var myRequest = new XMLHttpRequest();
+    myRequest.open("GET", "http://localhost:8888/", true);
+    myRequest.onload = function(){
+      var myArr = JSON.parse(this.responseText); 
+      console.log(myArr);
+    };
+     myRequest.send();
+}
   render() {
     let screen;
     switch (store.state.programScreen) {
@@ -60,9 +73,7 @@ class App extends React.Component {
       <div className='container'>  
         
       <div className="calculator">
-        <button className="screen-button" onClick={()=>this.showScreen()}>
-        Panel
-        </button>
+        
         <Screen />
         <div className="calculator-keypad">
           <KeyPad />
