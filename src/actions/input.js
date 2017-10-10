@@ -89,6 +89,9 @@ export function execute(state, value) {
       break;
     case key.ARC:
       if (Operator === key.ARC) {
+        if (recording) {
+          parts = parts.substring(-1,parts.indexOf("arc")-1)
+        }
         Operator = ''
       } else {
         Operator = String(value)

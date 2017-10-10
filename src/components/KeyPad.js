@@ -12,7 +12,7 @@ export default class KeyPad extends React.Component {
         return (
             <div className="keys">
                 <div className="Keyboard--row">
-                    <Key label="xʸ" keyCode={k.POW} /> 
+                    <Key label="yˣ" keyCode={k.POW} /> 
                     <Key label="LOG" keyCode={k.LOG} /> 
                     <Key label="LN" keyCode={k.LN} /> 
                     <Key label="eˣ" keyCode={k.EXP} /> 

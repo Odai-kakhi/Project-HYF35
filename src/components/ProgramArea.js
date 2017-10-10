@@ -20,10 +20,12 @@ export default class ProgramArea extends React.Component {
 
     store.setState({
       programText: event.target.value,
-
+      currentOperation : 0
     })
   }
-
+  handleStep() {
+    program.Step(store.state.programText)
+  }
   handleSubmit(event) {
     store.setState({
       recording: false,
@@ -32,12 +34,11 @@ export default class ProgramArea extends React.Component {
     program.ProgramAction(store.state.programText)
 
     event.preventDefault()
-
+console.log(event)
 
   }
 
   handleCheckBoxChange() {
-
     store.setState({
       recording: !store.state.recording,
 
@@ -45,19 +46,41 @@ export default class ProgramArea extends React.Component {
   }
 
   handleClearBox() {
+    console.log(store.state.programText)
     store.setState({
       programText: ''
+    })
+  }
+  handleCheckBoxSlow() {
+    store.setState({
+      slow: !store.state.slow,
+
+    })
+  }
+  changeProgramScreen(screenName) {
+    console.log(screenName)
+    store.setState({
+      programScreen : screenName
     })
   }
 
   render() {
     return (
+      <div>
+        <div className="local-storge">
+        <div className='SaveScreen' onClick={()=>{this.changeProgramScreen('SaveScreen')}}>
+          Save
+        </div>
+        <div className='LoadScreen' onClick={()=>{this.changeProgramScreen('LoadScreen')}}>
+          Load
+        </div>
+        </div>
       <form onSubmit={this.handleSubmit}>
-        
         <label>
           <textarea className='text-area' id='textArea' value={store.state.programText} onChange={this.handleChange} /> 
-        </label>
+        </label> 
         <div className='Record-button'>
+        
           <input type="checkbox" className='checkbox'
             checked={store.state.recording}
             onChange={this.handleCheckBoxChange}
@@ -65,11 +88,24 @@ export default class ProgramArea extends React.Component {
           <label className='record-text'>
             Record
           </label>
+          <div className='slow-button'>
+          <input type="checkbox" className='checkbox'
+            checked={store.state.slow}
+            onChange={this.handleCheckBoxSlow}
+          />
+          <label className='slow-text'>
+            Slow
+          </label>    
+          </div>  
         </div>
-        <button type="submit" value="R"
-          className='run-button' >R</button>
-          <button className='clear-button' onClick={this.handleClearBox}> Clear </button>
+        <button type="submit" value="Run"
+          className='run-button'>Run</button>
+          
       </form>
+      <button className='step-button' onClick={this.handleStep}> Step </button>  
+      <button className='clear-button' onClick={this.handleClearBox}> Clear </button>
+       
+      </div>
     );
   }
 }
