@@ -26,7 +26,6 @@
     // connection.end();
     if (!err) {
         console.log('The solution is: ', rows);
-        // res.send(rows)
         res.end(JSON.stringify(rows))
       }
           

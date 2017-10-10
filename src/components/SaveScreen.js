@@ -47,7 +47,7 @@ export default class SaveScreen extends React.Component {
     let programDescription = ''
     return (
       <div>
-        <div className='SaveScreen' onClick={() => { this.changeProgramScreen('ProgramArea') }}>
+        <div className='cancel-but' onClick={() => { this.changeProgramScreen('ProgramArea') }}>
           Cancel
         </div>
 
@@ -66,7 +66,7 @@ export default class SaveScreen extends React.Component {
             }
           } />
         </label>
-        <button type="button" className="run-button"
+        <button type="button" className="save-button"
           onClick={() => { this.handleSave(programName, programDescription) }}
         >
           Save

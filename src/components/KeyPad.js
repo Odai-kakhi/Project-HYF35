@@ -10,7 +10,7 @@ export default class KeyPad extends React.Component {
 	render() {
         
         return (
-            <div className="input-keys">
+            <div className="keys">
                 <div className="Keyboard--row">
                     <Key label="yˣ" keyCode={k.POW} /> 
                     <Key label="LOG" keyCode={k.LOG} /> 

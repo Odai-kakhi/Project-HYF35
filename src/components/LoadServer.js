@@ -53,7 +53,7 @@ export default class LoadScreen extends React.Component {
     console.log(store.state.SQLData)
     const listItems = store.state.SQLData.map((program) => {
       return (
-        <li key={program.name}
+        <li className='listItems' key={program.name}
         >
           
           <div onClick={() => {
@@ -63,7 +63,7 @@ export default class LoadScreen extends React.Component {
             this.changeProgramScreen('ProgramArea')
           }
           }>
-            {program.name}
+            <div className= 'LiName'>{program.name}</div>
           </div>
   
         </li>
@@ -71,7 +71,7 @@ export default class LoadScreen extends React.Component {
       
   });
     return (
-      <ul>{listItems}</ul>
+      <ul className = " program-list">{listItems}</ul>
     );
   }
 

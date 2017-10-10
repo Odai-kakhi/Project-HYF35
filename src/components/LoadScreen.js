@@ -29,7 +29,7 @@ export default class LoadScreen extends React.Component {
 
   programList() {
     const listItems = Object.keys(localStorage).map((program) =>
-        <li key={program.toString()} 
+        <li className='listItems' key={program.toString()} 
       >
         <div className="delete"
           onClick={() => {
@@ -38,7 +38,7 @@ export default class LoadScreen extends React.Component {
           }
           
           >
-          X
+          Delete
           </div>
         <div onClick={() => {
             store.setState({
@@ -47,13 +47,13 @@ export default class LoadScreen extends React.Component {
             this.changeProgramScreen('ProgramArea')
           }
         }>  
-          {program}
+        <div className= 'LiName'>{program}</div>
         </div>
 
       </li>
     );
     return (
-      <ul>{listItems}</ul>
+      <ul className = " program-list">{listItems}</ul>
     );
   }
 
@@ -62,7 +62,7 @@ export default class LoadScreen extends React.Component {
 
     return (
       <div>
-        <div className='SaveScreen' onClick={() => { this.changeProgramScreen('ProgramArea') }}>
+        <div className='cancel' onClick={() => { this.changeProgramScreen('ProgramArea') }}>
           Cancel
         </div>
         {this.programList()}

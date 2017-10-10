@@ -68,15 +68,15 @@ export default class ProgramArea extends React.Component {
     return (
       <div>
         <div className="local-storge">
-        <div className='SaveScreen' onClick={()=>{this.changeProgramScreen('SaveScreen')}}>
-          Save
-        </div>
-        <div className='LoadScreen' onClick={()=>{this.changeProgramScreen('LoadScreen')}}>
-          Load
-        </div>
-        <div className='LoadServer' onClick={()=>{this.changeProgramScreen('LoadServer')}}>
-          Server
-        </div>  
+          <div className='SaveScreen' onClick={()=>{this.changeProgramScreen('SaveScreen')}}>
+            Save
+          </div>
+          <div className='LoadScreen' onClick={()=>{this.changeProgramScreen('LoadScreen')}}>
+            Load
+          </div>
+          <div className='LoadServer' onClick={()=>{this.changeProgramScreen('LoadServer')}}>
+            Server
+          </div>  
         </div>
       <form onSubmit={this.handleSubmit}>
         <label>

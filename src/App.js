@@ -65,9 +65,7 @@ class App extends React.Component {
     return (
 
       <div className='container'>  
-        
-      <div className="calculator">
-        
+        <div className="calculator">        
         <Screen />
         <div className="calculator-keypad">
           <KeyPad />
@@ -76,6 +74,8 @@ class App extends React.Component {
         {screen}
         </div>
       </div>
+
+       
     </div>
 
     );
@@ -83,3 +83,5 @@ class App extends React.Component {
 }
 
 export default App;
+
+        
