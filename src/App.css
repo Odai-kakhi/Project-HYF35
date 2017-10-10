@@ -148,8 +148,8 @@ button:hover::after {
 }
 .text-area {
     position: absolute;
-    top: 10px;
-    height: 550px;
+    top: 46px;
+    height: 501px;
     width: 327px;
     left: 10px;
     background: rgba(255, 255, 255, 0.2);

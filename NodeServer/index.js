@@ -21,8 +21,8 @@
     }
     });
     
-    app.get("/",function(req,res){
-    connection.query('SELECT * from Users', function(err, rows) {
+    app.get("/program",function(req,res){
+    connection.query('SELECT * from Programs', function(err, rows) {
     // connection.end();
     if (!err) {
         console.log('The solution is: ', rows);

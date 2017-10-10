@@ -7,5 +7,6 @@ export default {
     programText: '',
     recording: false,
     slow: false,
-    currentOperation:0
+    currentOperation: 0,
+    SQLData: []
 }

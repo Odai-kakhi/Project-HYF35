@@ -8,7 +8,7 @@ import './App.css'
 import ProgramArea from './components/ProgramArea'
 import SaveScreen from './components/SaveScreen'
 import LoadScreen from './components/LoadScreen'
-
+import LoadServer from './components/LoadServer'
 
 class App extends React.Component {
   
@@ -28,7 +28,6 @@ class App extends React.Component {
   componentDidMount() {
     document.addEventListener('keyup', this.handleKeyDown)
     
-    this.importFromSQL()
   }
   
 
@@ -41,25 +40,20 @@ class App extends React.Component {
     }
     
   };
-  importFromSQL() {
-  
-    var myRequest = new XMLHttpRequest();
-    myRequest.open("GET", "http://localhost:8888/", true);
-    myRequest.onload = function(){
-      var myArr = JSON.parse(this.responseText); 
-      console.log(myArr);
-    };
-     myRequest.send();
-}
+
   render() {
     let screen;
     switch (store.state.programScreen) {
       case 'SaveScreen':
-        screen = (<SaveScreen />);
+        screen = (<SaveScreen />)
         break;
         
       case 'LoadScreen':
         screen = (<LoadScreen />)
+        break
+
+      case 'LoadServer':
+        screen = (<LoadServer />)
         break
 
       default:

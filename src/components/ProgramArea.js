@@ -34,7 +34,7 @@ export default class ProgramArea extends React.Component {
     program.ProgramAction(store.state.programText)
 
     event.preventDefault()
-console.log(event)
+    console.log(event)
 
   }
 
@@ -74,6 +74,9 @@ console.log(event)
         <div className='LoadScreen' onClick={()=>{this.changeProgramScreen('LoadScreen')}}>
           Load
         </div>
+        <div className='LoadServer' onClick={()=>{this.changeProgramScreen('LoadServer')}}>
+          Server
+        </div>  
         </div>
       <form onSubmit={this.handleSubmit}>
         <label>
