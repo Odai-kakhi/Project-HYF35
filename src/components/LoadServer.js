@@ -35,7 +35,7 @@ export default class LoadScreen extends React.Component {
   importFromSQL() {
     
       var myRequest = new XMLHttpRequest();
-      myRequest.open("GET", "http://192.168.2.11:8888/program", true);
+      myRequest.open("GET", "http://localhost:8888/program", true);
       myRequest.onload = function(){
         var myArr = JSON.parse(this.responseText); 
         console.log(myArr);

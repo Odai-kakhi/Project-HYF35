@@ -9,6 +9,7 @@ import ProgramArea from './components/ProgramArea'
 import SaveScreen from './components/SaveScreen'
 import LoadScreen from './components/LoadScreen'
 import LoadServer from './components/LoadServer'
+import LogIn from './singUI/logIn'
 
 class App extends React.Component {
   
@@ -23,12 +24,12 @@ class App extends React.Component {
 
   componentWillUnmount() {
     this.subscription.remove()
-    document.removeEventListener('keyup', this.handleKeyDown)
+    // document.removeEventListener('keyup', this.handleKeyDown)
   }
-  componentDidMount() {
-    document.addEventListener('keyup', this.handleKeyDown)
+  // componentDidMount() {
+  //   document.addEventListener('keyup', this.handleKeyDown)
     
-  }
+  // }
   
 
     
@@ -63,8 +64,11 @@ class App extends React.Component {
 
     }
     return (
-
+       
       <div className='container'>  
+       <div className='log-in'>
+        <LogIn/>
+        </div>
         <div className="calculator">        
         <Screen />
         <div className="calculator-keypad">
@@ -74,8 +78,8 @@ class App extends React.Component {
         {screen}
         </div>
       </div>
-
-       
+      
+    
     </div>
 
     );

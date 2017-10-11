@@ -24,7 +24,7 @@ body {
 
 .calculator {
     position: relative;
-    left: 27%;
+    left: 30%;
     top: 10px;
     border: 1px solid #ddd;
     width: 350px;
@@ -395,4 +395,11 @@ button:hover::after {
     margin-bottom: 15px;
     text-align: left;
     
+}
+
+.log-in{
+    padding: 20px;
+    position: absolute;
+    width: 25%;
+    height: 100%;
 }
