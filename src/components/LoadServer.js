@@ -22,9 +22,16 @@ export default class LoadScreen extends React.Component {
     })
   }
 
-  componentDidMount() {
-    this.importFromSQL()       
+  // componentDidMount() {
+  //   this.importFromSQL()       
     
+  // }
+
+  componentDidMount() {
+    this.interval = setInterval(this.importFromSQL, 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   HandleDelete(program) {
