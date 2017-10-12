@@ -13,6 +13,7 @@ export default class LoadScreen extends React.Component {
 
   componentWillUnmount() {
     this.subscription.remove()
+    clearInterval(this.interval);
   }
 
   changeProgramScreen(screenName) {
@@ -22,17 +23,10 @@ export default class LoadScreen extends React.Component {
     })
   }
 
-  // componentDidMount() {
-  //   this.importFromSQL()       
-    
-  // }
-
   componentDidMount() {
     this.interval = setInterval(this.importFromSQL, 1000);
   }
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
+
 
   HandleDelete(program) {
     localStorage.removeItem(program)
@@ -40,20 +34,21 @@ export default class LoadScreen extends React.Component {
   }
 
   importFromSQL() {
-    
-      var myRequest = new XMLHttpRequest();
-      myRequest.open("GET", "http://192.168.2.11:8888/program", true);
-      myRequest.onload = function(){
-        var myArr = JSON.parse(this.responseText); 
-        console.log(myArr);
-        store.setState({
-          SQLData : myArr
-        })
-       
-        
-      };
-      myRequest.send();
-      
+
+    var myRequest = new XMLHttpRequest();
+    myRequest.open("GET", "http://localhost:8888/program", true);
+    myRequest.setRequestHeader('Authorization', 'Bearer ' + store.state.user.token);
+    myRequest.onload = function () {
+      var myArr = JSON.parse(this.responseText);
+      console.log(myArr);
+      store.setState({
+        SQLData: myArr
+      })
+
+
+    };
+    myRequest.send();
+
   }
 
   programList() {
@@ -62,7 +57,7 @@ export default class LoadScreen extends React.Component {
       return (
         <li className='listItems' key={program.name}
         >
-          
+
           <div onClick={() => {
             store.setState({
               programText: program.programText
@@ -70,15 +65,15 @@ export default class LoadScreen extends React.Component {
             this.changeProgramScreen('ProgramArea')
           }
           }>
-            <div className= 'LiName'>{program.name}</div>
+            <div className='LiName'>{program.name}</div>
           </div>
-  
+
         </li>
-    )
-      
-  });
+      )
+
+    });
     return (
-      <ul className = " program-list">{listItems}</ul>
+      <ul className=" program-list">{listItems}</ul>
     );
   }
 

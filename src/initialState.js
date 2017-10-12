@@ -8,5 +8,10 @@ export default {
     recording: false,
     slow: false,
     currentOperation: 0,
-    SQLData: []
+    SQLData: [],
+    user: {
+        Fname: '',
+        Lname: '',
+        token: ''
+    }
 }
