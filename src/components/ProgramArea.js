@@ -68,16 +68,28 @@ export default class ProgramArea extends React.Component {
     return (
       <div>
         <div className="local-storge">
-          <div className='SaveScreen' onClick={()=>{this.changeProgramScreen('SaveScreen')}}>
+        <select className='SaveScreen' name='locol'>
+          <option>
+          <div  onClick={()=>{this.changeProgramScreen('SaveScreen')}}>
             Save
           </div>
-          <div className='LoadScreen' onClick={()=>{this.changeProgramScreen('LoadScreen')}}>
+          </option>
+          <option>
+          <div  onClick={()=>{this.changeProgramScreen('LoadScreen')}}>
             Load
           </div>
+          </option>
+          
+          </select>
+          <select className='LoadServer'>
+            <option>
           <div className='LoadServer' onClick={()=>{this.changeProgramScreen('LoadServer')}}>
             Server
           </div>  
+          </option>
+          </select>
         </div>
+        
       <form onSubmit={this.handleSubmit}>
         <label>
           <textarea className='text-area' id='textArea' value={store.state.programText} onChange={this.handleChange} /> 

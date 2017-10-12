@@ -10,7 +10,14 @@
   "license": "ISC",
   "dependencies": {
     "babel-cli": "^6.26.0",
-    "express": "^4.16.1",
-    "mysql": "^2.15.0"
+    "bcrypt": "^1.0.3",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
+    "lodash": "^4.17.4",
+    "mysql": "^2.15.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.0"
   }
 }

@@ -207,7 +207,7 @@ button:hover::after {
     position: absolute;
     color: #a50313;
     transition: all 0.5s;
-    top: 580px;
+    top: 570px;
     left: 180px;
     width: 80px;
     height: 42px;

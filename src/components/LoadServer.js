@@ -42,8 +42,6 @@ export default class LoadScreen extends React.Component {
         store.setState({
           SQLData : myArr
         })
-       
-        
       };
       myRequest.send();
       

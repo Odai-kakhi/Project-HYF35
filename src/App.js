@@ -11,6 +11,7 @@ import LoadScreen from './components/LoadScreen'
 import LoadServer from './components/LoadServer'
 import LogIn from './singUI/logIn'
 
+
 class App extends React.Component {
   
   showScreen () {
@@ -65,7 +66,7 @@ class App extends React.Component {
     }
     return (
        
-      <div className='container'>  
+      <div>  
        <div className='log-in'>
         <LogIn/>
         </div>

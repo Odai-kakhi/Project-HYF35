@@ -58,23 +58,25 @@ singUpSubmit( userFirstName,userLastName,singUpEmail,singUpPassword,singUpConfir
         var userPassword = ''
 
         return(
-            <div>
-                 <div class="login">
-            <h1>Login</h1>
-                    <input type="text" name="email" placeholder="E-mail" required="required" onChange={(event)=>userEmail = event.target.value} />
-                    <input type="password" name="password" placeholder="Password" required="required" onChange={(event)=>userPassword = event.target.value} />
-                    <button class="btn btn-primary btn-block btn-large" onClick={()=>this.logInSubmit(userEmail,userPassword)}>Let me in.</button>
+            <div className = 'container'>
+                <div className = 'welcome'></div>
+                <div className = 'form'>
+                    <div className="login">
+                        <h1>Login</h1>
+                        <input type="text" name="email" placeholder="E-mail" required="required" onChange={(event)=>userEmail = event.target.value} />
+                        <input type="password" name="password" placeholder="Password" required="required" onChange={(event)=>userPassword = event.target.value} />
+                        <div className="submit" onClick={()=>this.logInSubmit(userEmail,userPassword)}>Let me in.</div>
                     </div>
-                    <div class="singup">
-                <h1>Sign up</h1>               
-                    <input type="text" name="firstname" placeholder="First name" required="required" onChange={(event)=>userFirstName = event.target.value} />
-                    <input type="text" name="lastname" placeholder="Last name" required="required" onChange={(event)=>userLastName = event.target.value} />
-                    <input type="text" name="email" placeholder="E-mail" required="required" onChange={(event)=>singUpEmail = event.target.value} />
-                    <input type="password" name="password" placeholder="Password" required="required" onChange={(event)=>singUpPassword = event.target.value} />
-                    <input type="password" name="confirmPassword" placeholder="Confirm Password" required="required" onChange={(event)=>singUpConfirmPassword = event.target.value} />
-                    <button type="submit" class="btn btn-primary btn-block btn-large" id="singup-submit" onClick={()=>this.singUpSubmit(userFirstName,userLastName,singUpEmail,singUpPassword,singUpConfirmPassword)} >Sing me up.</button>
-               
-                </div>
+                    <div className="singup">
+                        <h1>Sign up</h1>               
+                        <input type="text" name="firstname" placeholder="First name" required="required" onChange={(event)=>userFirstName = event.target.value} />
+                        <input type="text" name="lastname" placeholder="Last name" required="required" onChange={(event)=>userLastName = event.target.value} />
+                        <input type="text" name="email" placeholder="E-mail" required="required" onChange={(event)=>singUpEmail = event.target.value} />
+                        <input type="password" name="password" placeholder="Password" required="required" onChange={(event)=>singUpPassword = event.target.value} />
+                        <input type="password" name="confirmPassword" placeholder="Confirm Password" required="required" onChange={(event)=>singUpConfirmPassword = event.target.value} />
+                        <div type="submit" className="submit" id="singup-submit" onClick={()=>this.singUpSubmit(userFirstName,userLastName,singUpEmail,singUpPassword,singUpConfirmPassword)} >Sing me up.</div>
+                    </div>
+                    </div>               
             </div>
         )
 
