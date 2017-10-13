@@ -18,7 +18,16 @@ export default class LogIn extends React.Component{
         console.log(myArr[0].email);
         var isPasswordCorect = bcrypt.compareSync(password,myArr[0].passwordHashFromBcrypt );
             if(isPasswordCorect){
-            console.log('goooooood')
+                console.log('goooooood')
+
+                var user = {
+                    Fname: myArr[0].first_name,
+                    Lname: myArr[0].last_name,
+                    token: myArr[0].token
+                }
+                store.setState({
+                user:user
+            })    
             }else{
             console.log('fuuuuuck')
             }
@@ -31,21 +40,21 @@ console.log('email ===>' + email + 'password ===>' + password)
 
 
 singUpSubmit( userFirstName,userLastName,singUpEmail,singUpPassword,singUpConfirmPassword){
-           if(singUpPassword == singUpConfirmPassword){
-            const saltRounds = 10;
-            var salt = bcrypt.genSaltSync(saltRounds);
-            var hash = bcrypt.hashSync(singUpPassword, salt);
-            var hashed = [hash]
-            var sqlStatment = `http://localhost:8888/signup/${singUpEmail}/${userFirstName}/${userLastName}/${hashed}`
-            var myRequest = new XMLHttpRequest();
-            myRequest.open("POST", sqlStatment, true); 
-            myRequest.setRequestHeader("Content-type", "multipart/form-data");
-            myRequest.send();
-
-           }else{
-               alert('زبط الباسورد يا عرصة')
-           }
+    if(singUpPassword == singUpConfirmPassword){
+     const saltRounds = 10;
+     var salt = bcrypt.genSaltSync(saltRounds);
+     var hash = bcrypt.hashSync(singUpPassword, salt);
+     var hashed = [hash]
+     var sqlStatment = `http://localhost:8888/signup/${singUpEmail}/${userFirstName}/${userLastName}/${hashed}`
+     var myRequest = new XMLHttpRequest();
+     myRequest.open("POST", sqlStatment, true); 
+     myRequest.setRequestHeader("Content-type", "multipart/form-data");
+     myRequest.send();
+    }else{
+        alert('زبط الباسورد يا عرصة')
+    }
 }
+
 
 
     render(){
@@ -58,26 +67,26 @@ singUpSubmit( userFirstName,userLastName,singUpEmail,singUpPassword,singUpConfir
         var userPassword = ''
 
         return(
+            <div className = 'container-1'>
             <div className = 'container'>
-                <div className = 'welcome'></div>
-                <div className = 'form'>
-                    <div className="login">
-                        <h1>Login</h1>
-                        <input type="text" name="email" placeholder="E-mail" required="required" onChange={(event)=>userEmail = event.target.value} />
-                        <input type="password" name="password" placeholder="Password" required="required" onChange={(event)=>userPassword = event.target.value} />
-                        <div className="submit" onClick={()=>this.logInSubmit(userEmail,userPassword)}>Let me in.</div>
-                    </div>
-                    <div className="singup">
-                        <h1>Sign up</h1>               
-                        <input type="text" name="firstname" placeholder="First name" required="required" onChange={(event)=>userFirstName = event.target.value} />
-                        <input type="text" name="lastname" placeholder="Last name" required="required" onChange={(event)=>userLastName = event.target.value} />
-                        <input type="text" name="email" placeholder="E-mail" required="required" onChange={(event)=>singUpEmail = event.target.value} />
-                        <input type="password" name="password" placeholder="Password" required="required" onChange={(event)=>singUpPassword = event.target.value} />
-                        <input type="password" name="confirmPassword" placeholder="Confirm Password" required="required" onChange={(event)=>singUpConfirmPassword = event.target.value} />
-                        <div type="submit" className="submit" id="singup-submit" onClick={()=>this.singUpSubmit(userFirstName,userLastName,singUpEmail,singUpPassword,singUpConfirmPassword)} >Sing me up.</div>
-                    </div>
-                    </div>               
+                <div className="login">
+                    <h1>Login</h1>
+                    <input type="text" name="email" placeholder="E-mail" required="required" onChange={(event)=>userEmail = event.target.value} />
+                    <input type="password" name="password" placeholder="Password" required="required" onChange={(event)=>userPassword = event.target.value} />
+                    <div className="submit" onClick={()=>this.logInSubmit(userEmail,userPassword)}>Let me in.</div>
+                </div>
+                <div className="singup">
+                    <h1>Sign up</h1>               
+                    <input type="text" name="firstname" placeholder="First name" required="required" onChange={(event)=>userFirstName = event.target.value} />
+                    <input type="text" name="lastname" placeholder="Last name" required="required" onChange={(event)=>userLastName = event.target.value} />
+                    <input type="text" name="email" placeholder="E-mail" required="required" onChange={(event)=>singUpEmail = event.target.value} />
+                    <input type="password" name="password" placeholder="Password" required="required" onChange={(event)=>singUpPassword = event.target.value} />
+                    <input type="password" name="confirmPassword" placeholder="Confirm Password" required="required" onChange={(event)=>singUpConfirmPassword = event.target.value} />
+                    <div type="submit" className="submit" id="singup-submit" onClick={()=>this.singUpSubmit(userFirstName,userLastName,singUpEmail,singUpPassword,singUpConfirmPassword)} >Sing me up.</div>
+                </div>
             </div>
+        </div>
+
         )
 
     }

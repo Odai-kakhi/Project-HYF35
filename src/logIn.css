@@ -17,17 +17,14 @@ input {
     -ms-transition: box-shadow .5s ease;
     transition: box-shadow .5s ease;
 }
-
 .login {
     color: white;
     width: 100%;
     
 }
-
 .singup {
     color: white;
 }
-
 .submit {
     background: linear-gradient(to bottom, #009EFF 0px, #0075BC 100%) repeat scroll 0 0 transparent;
     border: 1px solid rgba(0, 0, 0, 0.3);

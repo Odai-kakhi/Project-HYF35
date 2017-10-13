@@ -9,4 +9,10 @@ export default {
     slow: false,
     currentOperation: 0,
     SQLData: [],
+    user: {
+        Fname: '',
+        Lname: '',
+        token: ''
+    },
+    dropDown : false
 }

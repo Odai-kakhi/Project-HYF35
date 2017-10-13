@@ -3,6 +3,7 @@ import store from '../store'
 import * as program from '../actions/ProgramAction'
 import '../App.css'
 
+
 export default class ProgramArea extends React.Component {
 
 
@@ -20,7 +21,8 @@ export default class ProgramArea extends React.Component {
 
     store.setState({
       programText: event.target.value,
-      currentOperation : 0
+      currentOperation : 0,
+      dropDown:false
     })
   }
   handleStep() {
@@ -29,6 +31,7 @@ export default class ProgramArea extends React.Component {
   handleSubmit(event) {
     store.setState({
       recording: false,
+      dropDown:false
 
     })
     program.ProgramAction(store.state.programText)
@@ -41,6 +44,7 @@ export default class ProgramArea extends React.Component {
   handleCheckBoxChange() {
     store.setState({
       recording: !store.state.recording,
+      dropDown:false
 
     })
   }
@@ -48,48 +52,61 @@ export default class ProgramArea extends React.Component {
   handleClearBox() {
     console.log(store.state.programText)
     store.setState({
-      programText: ''
+      programText: '',
+      dropDown:false
     })
   }
   handleCheckBoxSlow() {
     store.setState({
       slow: !store.state.slow,
+      dropDown:false
 
     })
   }
   changeProgramScreen(screenName) {
     console.log(screenName)
     store.setState({
-      programScreen : screenName
+      programScreen : screenName,
+      dropDown:false
     })
   }
 
+
   render() {
+    let dropDownItems 
+    
+      if (store.state.dropDown) {
+        dropDownItems = (
+          <div>
+            <div className='SaveScreen' onClick={()=>{this.changeProgramScreen('SaveScreen')}}>
+            Save to local storeg
+            </div>
+            <div className='LoadScreen' onClick={()=>{this.changeProgramScreen('LoadScreen')}}>
+            Load from label storeg
+            </div>
+            <div className='LoadServer' onClick={()=>{this.changeProgramScreen('LoadServer')}}>
+            Load from server
+          </div>  
+          <div className='saveServer' onClick={()=>{this.changeProgramScreen('LoadServer')}}>
+            save to server
+          </div>  
+          </div>
+            )
+      }
+          
+          
     return (
       <div>
         <div className="local-storge">
-        <select className='SaveScreen' name='locol'>
-          <option>
-          <div  onClick={()=>{this.changeProgramScreen('SaveScreen')}}>
-            Save
-          </div>
-          </option>
-          <option>
-          <div  onClick={()=>{this.changeProgramScreen('LoadScreen')}}>
-            Load
-          </div>
-          </option>
+            <div className='local' onClick={()=> store.setState({dropDown:!store.state.dropDown})}>
+              Load & save 
+             
+            </div>
+             {dropDownItems}
+
           
-          </select>
-          <select className='LoadServer'>
-            <option>
-          <div className='LoadServer' onClick={()=>{this.changeProgramScreen('LoadServer')}}>
-            Server
-          </div>  
-          </option>
-          </select>
+          
         </div>
-        
       <form onSubmit={this.handleSubmit}>
         <label>
           <textarea className='text-area' id='textArea' value={store.state.programText} onChange={this.handleChange} /> 
@@ -124,5 +141,4 @@ export default class ProgramArea extends React.Component {
     );
   }
 }
-
 

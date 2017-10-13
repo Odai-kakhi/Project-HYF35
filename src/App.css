@@ -62,7 +62,6 @@ body {
 .calculator-keypad {
     position: relative;
     top: 20px;
-   
 }
 
 .calculator .Keyboard--row .key-Enter {
@@ -240,11 +239,12 @@ button:hover::after {
 .local-storge {
     display: flex;
 }
-.LoadServer{
-    left: 122px;
+
+.LoadServer {
+    left: 23px;
     display: block;
     background-color: #a50313;
-    width: 100px;
+    width: 300px;
     height: 30px;
     text-align: center;
     padding-top: 5px;
@@ -255,13 +255,33 @@ button:hover::after {
     border-radius: 5px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, .3);
     cursor: pointer;
-    
+    margin-top: 98px;
+    z-index: 1;
+}
+.saveServer{
+    left: 23px;
+    display: block;
+    background-color: #a50313;
+    width: 300px;
+    height: 30px;
+    text-align: center;
+    padding-top: 5px;
+    color: #fff;
+    position: absolute;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, .3);
+    cursor: pointer;
+    margin-top: 130px;
+    z-index: 1;
 }
 .SaveScreen {
-    left: 10px;
+    position: absolute;
+    left: 23px;
     display: block;
     background-color: #a50313;
-    width: 100px;
+    width: 300px;
     height: 30px;
     text-align: center;
     padding-top: 5px;
@@ -272,19 +292,42 @@ button:hover::after {
     border-radius: 5px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, .3);
     cursor: pointer;
+    margin-top: 32px;
+    z-index: 1;
 }
 
 .LoadScreen {
-    left: 235px;
+    position: absolute;
+    left: 23px;
     display: block;
     background-color: #a50313;
-    width: 100px;
+    width: 300px;
     height: 30px;
     text-align: center;
     padding-top: 5px;
     color: #fff;
     position: absolute;
     /* margin-left: 160px; */
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, .3);
+    cursor: pointer;
+    z-index: 1;
+    margin-top: 65px;
+}
+
+.local {
+    position: absolute;
+    left: 23px;
+    display: block;
+    background-color: #082554;
+    width: 300px;
+    height: 30px;
+    text-align: center;
+    padding-top: 5px;
+    color: #fff;
+    position: absolute;
     cursor: pointer;
     overflow: hidden;
     border-radius: 5px;
@@ -340,10 +383,12 @@ button:hover::after {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, .3);
     cursor: pointer;
 }
-.LiName{
+
+.LiName {
     padding: 5px;
     cursor: pointer;
 }
+
 .program-list {
     position: absolute;
     top: 80px;
@@ -351,8 +396,6 @@ button:hover::after {
     list-style: none;
     color: white;
     display: block;
-
-  
     width: 250px;
     height: 30px;
     border-radius: 5px;
@@ -394,10 +437,9 @@ button:hover::after {
     display: flex;
     margin-bottom: 15px;
     text-align: left;
-    
 }
 
-.log-in{
+.log-in {
     padding: 20px;
     position: absolute;
     width: 25%;
