@@ -4,6 +4,8 @@ import '../App.css'
 
 export default class LoadScreen extends React.Component {
 
+ 
+
 
   componentWillMount() {
     this.subscription = store.subscribe(state => {
@@ -28,13 +30,22 @@ export default class LoadScreen extends React.Component {
   }
 
 
-  HandleDelete(program) {
-    localStorage.removeItem(program)
-    this.changeProgramScreen('LoadScreen')
+  HandleDelete(programID) {
+  
+    var myRequest = new XMLHttpRequest();
+    myRequest.open("DELETE", `http://localhost:8888/program/${programID}`, true);
+    myRequest.setRequestHeader('Authorization', 'Bearer ' + store.state.user.token);
+    myRequest.onload = function () {
+      var myArr = JSON.parse(this.responseText);
+      console.log(myArr);
+    };
+    myRequest.send();
+
+
   }
 
   importFromSQL() {
-
+    var description = description + 'n```n' + store.state.programText + 'n```'
     var myRequest = new XMLHttpRequest();
     myRequest.open("GET", "http://localhost:8888/program", true);
     myRequest.setRequestHeader('Authorization', 'Bearer ' + store.state.user.token);
@@ -45,9 +56,10 @@ export default class LoadScreen extends React.Component {
         SQLData: myArr
       })
 
-
+console.log('myarr ===>' + myArr[].programText)
     };
     myRequest.send();
+
 
   }
 
@@ -57,6 +69,15 @@ export default class LoadScreen extends React.Component {
       return (
         <li className='listItems' key={program.name}
         >
+         <div className="delete"
+          onClick={() => {
+            this.HandleDelete(program.programID)
+            }
+          }
+          
+          >
+          Delete
+          </div>
 
           <div onClick={() => {
             store.setState({

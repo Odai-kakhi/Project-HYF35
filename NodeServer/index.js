@@ -51,8 +51,9 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With")
+    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
 
-    res.header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 
     next();
 });
@@ -127,7 +128,43 @@ app.get("/program", passport.authenticate('jwt', { session: false }), function (
     });
 });
 
+app.delete("/program/:programID",passport.authenticate('jwt', { session: false }), function (req, res) {
+
+    // var userID = req.user.userID
+    const programID = req.params.programID;
+
+    connection.query('DELETE FROM programs WHERE programID = ? ', [programID], function (err, rows) {
+
+        if (!err) {
+            console.log('The row is: ', rows);
+            res.end(JSON.stringify(rows))
+        } else
+            console.log('Error while performing Query.');
+    });
+});
+
+app.post("/program/:programText/:name",passport.authenticate('jwt', { session: false }), function (req, res) {
+     const sqlValues = {
+        programID: req.params.programID,
+        programText: req.params.programText,
+        ownerUserID: req.user.userID,
+        name: req.params.name
+    };
+    connection.query('insert into programs set ? ',[sqlValues] , function (err, rows) {
+
+        if (!err) {
+            console.log('The solution is: ', rows);
+            res.end(JSON.stringify(rows))
+        } else
+            console.log('Error while performing Query.');
+    });
+});
+
+
 
 
 
 app.listen(8888);
+
+
+// sql_real_escape_string_quote‏

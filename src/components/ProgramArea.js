@@ -4,6 +4,7 @@ import * as program from '../actions/ProgramAction'
 import '../App.css'
 
 
+
 export default class ProgramArea extends React.Component {
 
 
@@ -18,7 +19,6 @@ export default class ProgramArea extends React.Component {
   }
 
   handleChange(event) {
-
     store.setState({
       programText: event.target.value,
       currentOperation : 0,
@@ -87,7 +87,7 @@ export default class ProgramArea extends React.Component {
             <div className='LoadServer' onClick={()=>{this.changeProgramScreen('LoadServer')}}>
             Load from server
           </div>  
-          <div className='saveServer' onClick={()=>{this.changeProgramScreen('LoadServer')}}>
+          <div className='saveServer' onClick={()=>{this.changeProgramScreen('SaveServer')}}>
             save to server
           </div>  
           </div>

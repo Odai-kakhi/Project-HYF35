@@ -10,6 +10,7 @@ import SaveScreen from './components/SaveScreen'
 import LoadScreen from './components/LoadScreen'
 import LoadServer from './components/LoadServer'
 import LogIn from './singUI/logIn'
+import SaveServer from './components/saveServer'
 
 class App extends React.Component {
   
@@ -55,6 +56,10 @@ class App extends React.Component {
 
       case 'LoadServer':
         screen = (<LoadServer />)
+        break
+
+        case 'SaveServer':
+        screen = (<SaveServer />)
         break
 
       default:
