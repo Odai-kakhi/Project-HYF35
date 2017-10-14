@@ -13,7 +13,11 @@ import LogIn from './singUI/logIn'
 import SaveServer from './components/saveServer'
 
 class App extends React.Component {
-  
+    
+    handleButtonClick() {
+     this.setState(this.state);
+  }
+
   showScreen () {
   document.getElementById("btn1").classList.toggle("open");
   }
@@ -71,6 +75,7 @@ class App extends React.Component {
     return (
        
       <div className='container'>  
+        <button onClick={()=>this.handleButtonClick() }>logout</button>
        <div className='log-in'>
         <LogIn/>
         </div>

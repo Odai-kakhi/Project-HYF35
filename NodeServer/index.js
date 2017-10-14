@@ -67,7 +67,7 @@ connection.connect(function (err) {
         console.log("Error connecting database ... nn");
     }
 });
-app.get("/login/:email", function (req, res) {
+app.post("/login/:email", function (req, res) {
     const email = req.params.email;
     console.log('===>>' + email)
     connection.query('select * from Users where email = ?', [email], function (err, rows) {
@@ -77,6 +77,7 @@ app.get("/login/:email", function (req, res) {
             var token = jwt.sign(payload, jwtOptions.secretOrKey);
             console.log('The solution is: ', rows[0].userID);
             console.log('token====> ' + token)
+            console.log(req.ServerResponse)
             rows[0].token = token
             res.end(JSON.stringify(rows))
 
@@ -84,7 +85,14 @@ app.get("/login/:email", function (req, res) {
         } else
             console.log('Error while performing Query.');
     });
+   
 });
+
+
+// app.get('/logout', function(req, res){
+
+// req.ServerResponse.shouldKeepAlive = false
+// });
 
 app.post("/signup/:email/:firstname/:lastname/:password", function (req, res, next) {
     const email = req.params.email;
@@ -168,3 +176,10 @@ app.listen(8888);
 
 
 // sql_real_escape_string_quote‏
+
+
+
+
+
+
+

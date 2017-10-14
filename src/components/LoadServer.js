@@ -56,7 +56,7 @@ export default class LoadScreen extends React.Component {
         SQLData: myArr
       })
 
-console.log('myarr ===>' + myArr[].programText)
+
     };
     myRequest.send();
 
