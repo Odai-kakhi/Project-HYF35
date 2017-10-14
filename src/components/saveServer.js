@@ -21,11 +21,11 @@ export default class saveServer extends React.Component {
       programScreen: screenName
     })
   }
-  handleSave(Name, description) {
-    description = description + 'n```n' + store.state.programText + 'n```'
-      
+  handleSave(Name, description, share) {
+    description = description + '\n\n```\n' + store.state.programText + '\n```'
+    description = description.replace(/\n/g, "newline")
     var myRequest = new XMLHttpRequest();
-    myRequest.open("POST", `http://localhost:8888/program/${description}/${Name}`, true);
+    myRequest.open("POST", `http://localhost:8888/program/${description}/${Name}/${share}`, true);
     myRequest.setRequestHeader('Authorization', 'Bearer ' + store.state.user.token);
     myRequest.onload = function () {
       var myArr = JSON.parse(this.responseText);
@@ -36,9 +36,12 @@ export default class saveServer extends React.Component {
     myRequest.send();
   }
 
+  
+
   render() {
     let programName = ''
     let programDescription = ''
+    let share = false
     return (
       <div>
         <div className='cancel-but' onClick={() => { this.changeProgramScreen('ProgramArea') }}>
@@ -61,10 +64,22 @@ export default class saveServer extends React.Component {
           } />
         </label>
         <button type="button" className="save-button"
-          onClick={() => { this.handleSave(programName, programDescription) }}
+          onClick={() => { this.handleSave(programName, programDescription, share) }}
         >
           Save
           </button>
+          <div className='private'>
+        
+          <input type="checkbox" className='checkbox-1'
+            
+            onChange={() => {
+              share = !share
+            }}
+          />
+          <label className='share'>
+            Share
+          </label>
+          </div>
       </div>
     );
   }

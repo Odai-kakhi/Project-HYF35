@@ -82,9 +82,12 @@ app.post("/login/:email", function (req, res) {
             res.end(JSON.stringify(rows))
 
 
-        } else
+        } else{
+            alert('Wrong E-mail or Password')
+          console.log(err)
             console.log('Error while performing Query.');
-    });
+        }    
+});
    
 });
 
@@ -126,7 +129,7 @@ app.get("/program", passport.authenticate('jwt', { session: false }), function (
 
     var userID = req.user.userID
 
-    connection.query('SELECT * from Programs WHERE ownerUserID = ?', [userID], function (err, rows) {
+    connection.query('SELECT * from Programs WHERE private = "1" || ownerUserID = ?', [userID], function (err, rows) {
 
         if (!err) {
             console.log('The solution is: ', rows);
@@ -151,13 +154,20 @@ app.delete("/program/:programID",passport.authenticate('jwt', { session: false }
     });
 });
 
-app.post("/program/:programText/:name",passport.authenticate('jwt', { session: false }), function (req, res) {
+app.post("/program/:programText/:name/:share", passport.authenticate('jwt', { session: false }), function (req, res) {
+    if (req.params.share==='true') {
+        var mprivate = '1' 
+    } else { var mprivate = '0' }
+   
      const sqlValues = {
-        programID: req.params.programID,
         programText: req.params.programText,
         ownerUserID: req.user.userID,
-        name: req.params.name
-    };
+        name: req.params.name,
+        private :mprivate
+     };
+    console.log(req.params.share)
+    console.log(sqlValues.private)
+     
     connection.query('insert into programs set ? ',[sqlValues] , function (err, rows) {
 
         if (!err) {
@@ -176,10 +186,3 @@ app.listen(8888);
 
 
 // sql_real_escape_string_quote‏
-
-
-
-
-
-
-

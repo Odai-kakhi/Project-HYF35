@@ -383,7 +383,10 @@ button:hover::after {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, .3);
     cursor: pointer;
 }
-
+.private {
+    position: absolute;
+    top: 574px;
+}
 .LiName {
     padding: 5px;
     cursor: pointer;
@@ -396,12 +399,14 @@ button:hover::after {
     list-style: none;
     color: white;
     display: block;
-    width: 250px;
-    height: 30px;
+    width: 320px;
+    height: 500px;
     border-radius: 5px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, .3);
     padding-left: 0px;
+    overflow: auto;
 }
+
 
 .cancel-but {
     display: block;
@@ -435,6 +440,7 @@ button:hover::after {
     border-radius: 5px;
     color: white;
     display: flex;
+    width: 290px;
     margin-bottom: 15px;
     text-align: left;
 }
@@ -444,4 +450,38 @@ button:hover::after {
     position: absolute;
     width: 25%;
     height: 100%;
+}
+
+.share{
+     position: absolute;
+    color: white;
+    transition: all 0.5s;
+    top: 0px;
+    left: 15px;
+    width: 80px;
+    height: 42px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.checkbox-1{
+    width: 20px;
+    top: 15px;
+}
+
+
+.my-checkbox{
+    color: white;
+    position: absolute;
+    display: flex;
+    width: 5%; 
+    right: 90%;   
+}
+
+.myProgtams{
+    position: absolute;
+    left: 33px;
+    color: white;
+    
 }

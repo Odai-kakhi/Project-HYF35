@@ -31,10 +31,10 @@ class App extends React.Component {
     this.subscription.remove()
     // document.removeEventListener('keyup', this.handleKeyDown)
   }
-  // componentDidMount() {
-  //   document.addEventListener('keyup', this.handleKeyDown)
-    
-  // }
+  componentDidMount() {
+    // document.addEventListener('keyup', this.handleKeyDown)
+    console.log(<LogIn/>)
+  }
   
 
     
@@ -75,7 +75,7 @@ class App extends React.Component {
     return (
        
       <div className='container'>  
-        <button onClick={()=>this.handleButtonClick() }>logout</button>
+      
        <div className='log-in'>
         <LogIn/>
         </div>

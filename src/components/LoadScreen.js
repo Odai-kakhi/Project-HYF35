@@ -53,7 +53,9 @@ export default class LoadScreen extends React.Component {
       </li>
     );
     return (
+      <div className = 'program-list-container'>
       <ul className = " program-list">{listItems}</ul>
+      </div>
     );
   }
 
