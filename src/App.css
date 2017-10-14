@@ -383,7 +383,10 @@ button:hover::after {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, .3);
     cursor: pointer;
 }
-
+.private {
+    position: absolute;
+    top: 561px;
+}
 .LiName {
     padding: 5px;
     cursor: pointer;

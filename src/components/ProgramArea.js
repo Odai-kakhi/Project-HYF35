@@ -74,7 +74,13 @@ export default class ProgramArea extends React.Component {
 
   render() {
     let dropDownItems 
-    
+    let showSaveButton
+    if (store.state.user.Fname !== 'Guest' ) {
+      showSaveButton=(<div className='saveServer' onClick={()=>{this.changeProgramScreen('SaveServer')}}>
+      save to server
+      </div> )
+    }   
+
       if (store.state.dropDown) {
         dropDownItems = (
           <div>
@@ -87,9 +93,8 @@ export default class ProgramArea extends React.Component {
             <div className='LoadServer' onClick={()=>{this.changeProgramScreen('LoadServer')}}>
             Load from server
           </div>  
-          <div className='saveServer' onClick={()=>{this.changeProgramScreen('SaveServer')}}>
-            save to server
-          </div>  
+          {showSaveButton}
+           
           </div>
             )
       }

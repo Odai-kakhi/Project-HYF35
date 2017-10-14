@@ -12,7 +12,11 @@ export default {
     user: {
         Fname: '',
         Lname: '',
-        token: ''
+        token: '',
+        userID:''
     },
-    dropDown : false
+    dropDown: false,
+    myPrivate: 1,
+    myPrograms: true,
+    views:'login'
 }

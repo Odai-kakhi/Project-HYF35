@@ -45,7 +45,6 @@ export default class LoadScreen extends React.Component {
   }
 
   importFromSQL() {
-    var description = description + 'n```n' + store.state.programText + 'n```'
     var myRequest = new XMLHttpRequest();
     myRequest.open("GET", "http://localhost:8888/program", true);
     myRequest.setRequestHeader('Authorization', 'Bearer ' + store.state.user.token);
@@ -56,41 +55,66 @@ export default class LoadScreen extends React.Component {
         SQLData: myArr
       })
 
-console.log('myarr ===>' + myArr[].programText)
     };
     myRequest.send();
 
 
   }
-
-  programList() {
+  deletButton(program) {
+    if ( store.state.user.Fname !== 'Guest' && program.ownerUserID === store.state.user.userID) {
+      return (
+        <div className="delete"
+        onClick={() => {
+          this.HandleDelete(program.programID)
+          }
+        }
+        >
+        Delete
+        </div>
+  
+      )
+    }
+    return
+  }
+  programList(my) {
     console.log(store.state.SQLData)
     const listItems = store.state.SQLData.map((program) => {
-      return (
-        <li className='listItems' key={program.name}
-        >
-         <div className="delete"
-          onClick={() => {
-            this.HandleDelete(program.programID)
-            }
-          }
-          
-          >
-          Delete
-          </div>
+if (my && program.ownerUserID === store.state.user.userID) {
+  return (
+    <li className='listItems' key={program.programID}
+    >
+     {this.deletButton(program)}
+     <div onClick={() => {
+      
+        store.setState({
+          programText: program.programText.replace(/newline/g, "\n")
+        })
+        this.changeProgramScreen('ProgramArea')
+      }
+      }>
+        <div className='LiName'>{program.name}</div>
+      </div>
 
-          <div onClick={() => {
-            store.setState({
-              programText: program.programText
-            })
-            this.changeProgramScreen('ProgramArea')
-          }
-          }>
-            <div className='LiName'>{program.name}</div>
-          </div>
+    </li>
+  )
+} else if(!my && program.ownerUserID !== store.state.user.userID){
+  return (
+    <li className='listItems' key={program.programID}
+    >
+     {this.deletButton(program)}
+     <div onClick={() => {
+      
+        store.setState({
+          programText: program.programText.replace(/newline/g, "\n")
+        })
+        this.changeProgramScreen('ProgramArea')
+      }
+      }>
+        <div className='LiName'>{program.name}</div>
+      </div>
 
-        </li>
-      )
+    </li>)
+}
 
     });
     return (
@@ -100,13 +124,27 @@ console.log('myarr ===>' + myArr[].programText)
 
 
   render() {
-
+    let my = store.state.myPrograms
     return (
       <div>
         <div className='SaveScreen' onClick={() => { this.changeProgramScreen('ProgramArea') }}>
           Cancel
         </div>
-        {this.programList()}
+        <div className='my'>
+        
+          <input type="checkbox" className='checkbox'
+            
+            onChange={() => {
+              store.setState({
+                myPrograms: !store.state.myPrograms
+              })
+            }}
+          />
+          <label>
+            My Programs
+          </label>
+          </div>
+        {this.programList(my)}
       </div>
     );
   }
