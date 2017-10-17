@@ -51,20 +51,24 @@ export default class saveServer extends React.Component {
 
         <label>
 
-          <input type="text" className='programName' id='textArea' defaultValue='Name'
+          <input type="text" className='programName' id='textArea' placeholder='Name'
             onChange={(event) => {
               programName = event.target.value
             }
             } />
 
-          <textarea className='text-area' defaultValue='Description' id='description' onChange={
+          <textarea className='text-area' placeholder='Description' id='description' onChange={
             (event) => {
               programDescription = event.target.value
             }
           } />
         </label>
         <button type="button" className="save-button"
-          onClick={() => { this.handleSave(programName, programDescription, share) }}
+          onClick={() => {
+              this.handleSave(programName, programDescription, share)
+              this.changeProgramScreen('ProgramArea')
+            }
+          }
         >
           Save
           </button>

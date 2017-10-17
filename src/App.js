@@ -29,10 +29,10 @@ class App extends React.Component {
 
   componentWillUnmount() {
     this.subscription.remove()
-    // document.removeEventListener('keyup', this.handleKeyDown)
+    document.removeEventListener('keyup', this.handleKeyDown)
   }
   componentDidMount() {
-    // document.addEventListener('keyup', this.handleKeyDown)
+    document.addEventListener('keyup', this.handleKeyDown)
     console.log(<LogIn/>)
   }
   
@@ -41,10 +41,10 @@ class App extends React.Component {
   handleKeyDown = (event) => {
     
     let { key } = event
-    if (document.activeElement!==document.getElementById( 'textArea')&& document.activeElement!==document.getElementById( 'description')) {
+    if (document.activeElement!==document.getElementById( 'textArea')&& document.activeElement!==document.getElementById( 'description')&& document.activeElement!==document.getElementById( 'firstname')&& document.activeElement!==document.getElementById( 'lastname')&& document.activeElement!==document.getElementById( 'password')&& document.activeElement!==document.getElementById( 'cpassword')&& document.activeElement!==document.getElementById( 'email')) {
       input.performOperation(Keyboard.keyboardCode[key])
     }
-    
+    //firstname lastname password cpassword email
   };
 
   render() {

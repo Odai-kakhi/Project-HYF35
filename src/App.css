@@ -348,7 +348,6 @@ button:hover::after {
     border-width: 1px;
     text-align: left;
     padding-left: 4px;
-    cursor: pointer;
 }
 
 .save-button {
@@ -469,7 +468,9 @@ button:hover::after {
     width: 20px;
     top: 15px;
 }
-
+.checkbox{
+    width: auto;
+}
 
 .my-checkbox{
     color: white;

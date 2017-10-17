@@ -88,7 +88,7 @@ export default class ProgramArea extends React.Component {
             Save to local storeg
             </div>
             <div className='LoadScreen' onClick={()=>{this.changeProgramScreen('LoadScreen')}}>
-            Load from label storeg
+            Load from local storeg
             </div>
             <div className='LoadServer' onClick={()=>{this.changeProgramScreen('LoadServer')}}>
             Load from server
